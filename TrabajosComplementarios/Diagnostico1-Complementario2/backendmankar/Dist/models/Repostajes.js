@@ -3,6 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Repostaje = void 0;
 const mongoose_1 = require("mongoose");
 const RepostajesSchema = new mongoose_1.Schema({
+    REPOSTAJE_ID: {
+        type: Number,
+        required: true,
+        unique: true,
+    },
     REPOSTAJE_KMAC: {
         type: Number,
         required: true,

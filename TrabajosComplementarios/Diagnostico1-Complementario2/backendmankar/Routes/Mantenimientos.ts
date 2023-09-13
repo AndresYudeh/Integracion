@@ -13,7 +13,7 @@ const {
 const router = Router();
 
 router.get('/', BuscarMantenimientos);
-router.get('/:_id', BuscarMantenimientoPorID);
+router.get('/:MANTENIMIENTO_ID', BuscarMantenimientoPorID);
 router.post(
   '/',
   [
@@ -24,7 +24,7 @@ router.post(
   ],
   CrearMantenimiento
 );
-router.put('/:_id', ActualizarMantenimiento);
-router.delete('/:_id', DesactivarMantenimiento);
+router.put('/:MANTENIMIENTO_ID', ActualizarMantenimiento);
+router.delete('/:MANTENIMIENTO_ID', DesactivarMantenimiento);
 
 export { router };

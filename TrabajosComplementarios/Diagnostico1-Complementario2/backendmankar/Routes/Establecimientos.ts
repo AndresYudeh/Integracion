@@ -13,7 +13,7 @@ const {
 const router = Router();
 
 router.get('/', BuscarEstablecimientos);
-router.get('/:_id', BuscarEstablecimientoPorID);
+router.get('/:ESTABLECIMIENTO_ID', BuscarEstablecimientoPorID);
 router.post(
   '/',
   [
@@ -22,7 +22,7 @@ router.post(
   ],
   CrearEstablecimiento
 );
-router.put('/:_id', ActualizarEstablecimiento);
-router.delete('/:_id', DesactivarEstablecimiento);
+router.put('/:ESTABLECIMIENTO_ID', ActualizarEstablecimiento);
+router.delete('/:ESTABLECIMIENTO_ID', DesactivarEstablecimiento);
 
 export { router };

@@ -3,6 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Mantenimiento = void 0;
 const mongoose_1 = require("mongoose");
 const MantenimientosSchema = new mongoose_1.Schema({
+    MANTENIMIENTO_ID: {
+        type: Number,
+        required: [true, "ID bligatorio"],
+        unique: true,
+    },
     MANTENIMIENTO_KMAC: {
         type: Number,
         required: true,

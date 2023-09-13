@@ -56,10 +56,10 @@ exports.BuscarEstablecimientos = BuscarEstablecimientos;
 // Controlador para obtener un establecimiento específico por ID
 const BuscarEstablecimientoPorID = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { id } = req.params; // Obtiene el ID del establecimiento de los parámetros de la solicitud
+        const { ESTABLECIMIENTO_ID } = req.params; // Obtiene el ID del establecimiento de los parámetros de la solicitud
         // Realiza la búsqueda del establecimiento por ID excluyendo los establecimientos con estado FALSE
         const establecimientoEncontrado = yield models_1.Establecimiento.findOne({
-            ESTABLECIMIENTO_ID: id,
+            ESTABLECIMIENTO_ID: Number(ESTABLECIMIENTO_ID),
             ESTADO: true,
         });
         if (!establecimientoEncontrado) {
@@ -79,18 +79,18 @@ exports.BuscarEstablecimientoPorID = BuscarEstablecimientoPorID;
 // Controlador para actualizar un establecimiento por ID
 const ActualizarEstablecimiento = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { id } = req.params; // Obtiene el ID del establecimiento de los parámetros de la solicitud
+        const { ESTABLECIMIENTO_ID } = req.params; // Obtiene el ID del establecimiento de los parámetros de la solicitud
         const datosActualizados = req.body; // Obtiene los datos actualizados del establecimiento del cuerpo de la solicitud
         // Verificar si el establecimiento con el ID dado existe
         const establecimientoExistente = yield models_1.Establecimiento.findOne({
-            ESTABLECIMIENTO_ID: id,
+            ESTABLECIMIENTO_ID: Number(ESTABLECIMIENTO_ID),
         });
         if (!establecimientoExistente) {
             // Si el establecimiento no se encuentra, devuelve un mensaje de error
             return res.status(404).json({ mensaje: "Establecimiento no encontrado" });
         }
         // Actualizar los datos del establecimiento existente con los nuevos datos
-        yield models_1.Establecimiento.findOneAndUpdate({ ESTABLECIMIENTO_ID: id }, datosActualizados);
+        yield models_1.Establecimiento.findOneAndUpdate({ ESTABLECIMIENTO_ID: Number(ESTABLECIMIENTO_ID) }, datosActualizados);
         // Devolver un mensaje de éxito
         res.status(200).json({ mensaje: "Establecimiento actualizado correctamente" });
     }
@@ -104,17 +104,17 @@ exports.ActualizarEstablecimiento = ActualizarEstablecimiento;
 // Controlador para desactivar un establecimiento por ID
 const DesactivarEstablecimiento = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { id } = req.params; // Obtiene el ID del establecimiento de los parámetros de la solicitud
+        const { ESTABLECIMIENTO_ID } = req.params; // Obtiene el ID del establecimiento de los parámetros de la solicitud
         // Verificar si el establecimiento con el ID dado existe
         const establecimientoExistente = yield models_1.Establecimiento.findOne({
-            ESTABLECIMIENTO_ID: id,
+            ESTABLECIMIENTO_ID: Number(ESTABLECIMIENTO_ID),
         });
         if (!establecimientoExistente) {
             // Si el establecimiento no se encuentra, devuelve un mensaje de error
             return res.status(404).json({ mensaje: "Establecimiento no encontrado" });
         }
         // Cambiar el estado del establecimiento a FALSE en lugar de eliminarlo
-        yield models_1.Establecimiento.findOneAndUpdate({ ESTABLECIMIENTO_ID: id }, { ESTADO: false });
+        yield models_1.Establecimiento.findOneAndUpdate({ ESTABLECIMIENTO_ID: Number(ESTABLECIMIENTO_ID) }, { ESTADO: false });
         // Devolver un mensaje de éxito
         res.status(200).json({ mensaje: "Establecimiento desactivado correctamente" });
     }

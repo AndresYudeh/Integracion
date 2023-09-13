@@ -8,10 +8,10 @@ const { BuscarEstablecimientos, BuscarEstablecimientoPorID, CrearEstablecimiento
 const router = (0, express_1.Router)();
 exports.router = router;
 router.get('/', BuscarEstablecimientos);
-router.get('/:_id', BuscarEstablecimientoPorID);
+router.get('/:ESTABLECIMIENTO_ID', BuscarEstablecimientoPorID);
 router.post('/', [
     (0, express_validator_1.check)('ESTABLECIMIENTO_NOMBRE', 'El nombre del establecimiento es obligatorio.').not().isEmpty(),
     (0, express_validator_1.check)('ESTABLECIMIENTO_DESCRIPCION', 'La descripción del establecimiento es obligatoria.').not().isEmpty(),
 ], CrearEstablecimiento);
-router.put('/:_id', ActualizarEstablecimiento);
-router.delete('/:_id', DesactivarEstablecimiento);
+router.put('/:ESTABLECIMIENTO_ID', ActualizarEstablecimiento);
+router.delete('/:ESTABLECIMIENTO_ID', DesactivarEstablecimiento);

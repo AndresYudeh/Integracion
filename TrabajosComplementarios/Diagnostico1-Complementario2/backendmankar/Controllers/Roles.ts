@@ -2,6 +2,28 @@ import { Roles } from "../Interfaces";
 import { Request, Response } from "express";
 import { Rol } from "../models";
 
+
+
+const CrearRol = async (req: Request, res: Response) => {
+  try {
+    const nuevoRol: Roles = req.body;
+    const rolExistente: Roles | null = await Rol.findOne({
+      ROL_ID: nuevoRol.ROL_ID,
+    });
+
+    if (rolExistente) {
+      return res.status(400).json({ error: "El rol ya existe" });
+    }
+
+    const rolCreado: Roles = await Rol.create(nuevoRol);
+    res.status(201).json(rolCreado);
+  } catch (error) {
+    console.error("Error al crear un rol:", error);
+    res.status(500).json({ error: "Error interno del servidor" });
+  }
+};
+
+
 const BuscarRoles = async (req: Request, res: Response) => {
   try {
     const { Limite = 10, Desde = 0 } = req.query;
@@ -41,24 +63,6 @@ const BuscarRolPorID = async (req: Request, res: Response) => {
   }
 };
 
-const CrearRol = async (req: Request, res: Response) => {
-  try {
-    const nuevoRol: Roles = req.body;
-    const rolExistente: Roles | null = await Rol.findOne({
-      ROL_ID: nuevoRol.ROL_ID,
-    });
-
-    if (rolExistente) {
-      return res.status(400).json({ error: "El rol ya existe" });
-    }
-
-    const rolCreado: Roles = await Rol.create(nuevoRol);
-    res.status(201).json(rolCreado);
-  } catch (error) {
-    console.error("Error al crear un rol:", error);
-    res.status(500).json({ error: "Error interno del servidor" });
-  }
-};
 
 const ActualizarRol = async (req: Request, res: Response) => {
   try {

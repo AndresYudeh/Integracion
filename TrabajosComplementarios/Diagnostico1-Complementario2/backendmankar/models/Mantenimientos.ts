@@ -3,6 +3,12 @@ import { Schema, model } from "mongoose";
 import { Mantenimientos } from "../Interfaces";
 
 const MantenimientosSchema: mongoose.Schema = new Schema<Mantenimientos>({
+ 
+  MANTENIMIENTO_ID: {
+    type: Number,
+    required: [true, "ID bligatorio"],
+    unique: true,
+  },
   MANTENIMIENTO_KMAC: {
     type: Number,
     required: true,

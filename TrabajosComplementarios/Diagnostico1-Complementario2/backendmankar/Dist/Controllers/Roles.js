@@ -11,6 +11,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DesactivarRol = exports.ActualizarRol = exports.CrearRol = exports.BuscarRolPorID = exports.BuscarRoles = void 0;
 const models_1 = require("../models");
+const CrearRol = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const nuevoRol = req.body;
+        const rolExistente = yield models_1.Rol.findOne({
+            ROL_ID: nuevoRol.ROL_ID,
+        });
+        if (rolExistente) {
+            return res.status(400).json({ error: "El rol ya existe" });
+        }
+        const rolCreado = yield models_1.Rol.create(nuevoRol);
+        res.status(201).json(rolCreado);
+    }
+    catch (error) {
+        console.error("Error al crear un rol:", error);
+        res.status(500).json({ error: "Error interno del servidor" });
+    }
+});
+exports.CrearRol = CrearRol;
 const BuscarRoles = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { Limite = 10, Desde = 0 } = req.query;
@@ -48,24 +66,6 @@ const BuscarRolPorID = (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.BuscarRolPorID = BuscarRolPorID;
-const CrearRol = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const nuevoRol = req.body;
-        const rolExistente = yield models_1.Rol.findOne({
-            ROL_ID: nuevoRol.ROL_ID,
-        });
-        if (rolExistente) {
-            return res.status(400).json({ error: "El rol ya existe" });
-        }
-        const rolCreado = yield models_1.Rol.create(nuevoRol);
-        res.status(201).json(rolCreado);
-    }
-    catch (error) {
-        console.error("Error al crear un rol:", error);
-        res.status(500).json({ error: "Error interno del servidor" });
-    }
-});
-exports.CrearRol = CrearRol;
 const ActualizarRol = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { ROL_ID } = req.params;

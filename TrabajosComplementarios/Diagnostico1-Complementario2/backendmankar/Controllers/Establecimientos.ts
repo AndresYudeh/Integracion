@@ -48,16 +48,16 @@ const BuscarEstablecimientos = async (req: Request, res: Response) => {
 };
 
 // Controlador para obtener un establecimiento específico por ID
+
 const BuscarEstablecimientoPorID = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params; // Obtiene el ID del establecimiento de los parámetros de la solicitud
+    const { ESTABLECIMIENTO_ID } = req.params; // Obtiene el ID del establecimiento de los parámetros de la solicitud
 
     // Realiza la búsqueda del establecimiento por ID excluyendo los establecimientos con estado FALSE
-    const establecimientoEncontrado: Establecimientos | null =
-      await Establecimiento.findOne({
-        ESTABLECIMIENTO_ID: id,
-        ESTADO: true,
-      });
+    const establecimientoEncontrado = await Establecimiento.findOne({
+      ESTABLECIMIENTO_ID: Number(ESTABLECIMIENTO_ID),
+      ESTADO: true,
+    });
 
     if (!establecimientoEncontrado) {
       // Si no se encuentra el establecimiento, devuelve un mensaje de error
@@ -73,17 +73,17 @@ const BuscarEstablecimientoPorID = async (req: Request, res: Response) => {
   }
 };
 
+
 // Controlador para actualizar un establecimiento por ID
 const ActualizarEstablecimiento = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params; // Obtiene el ID del establecimiento de los parámetros de la solicitud
-    const datosActualizados: Establecimientos = req.body; // Obtiene los datos actualizados del establecimiento del cuerpo de la solicitud
+    const { ESTABLECIMIENTO_ID } = req.params; // Obtiene el ID del establecimiento de los parámetros de la solicitud
+    const datosActualizados: Partial<Establecimientos> = req.body; // Obtiene los datos actualizados del establecimiento del cuerpo de la solicitud
 
     // Verificar si el establecimiento con el ID dado existe
-    const establecimientoExistente: Establecimientos | null =
-      await Establecimiento.findOne({
-        ESTABLECIMIENTO_ID: id,
-      });
+    const establecimientoExistente = await Establecimiento.findOne({
+      ESTABLECIMIENTO_ID: Number(ESTABLECIMIENTO_ID),
+    });
 
     if (!establecimientoExistente) {
       // Si el establecimiento no se encuentra, devuelve un mensaje de error
@@ -92,7 +92,7 @@ const ActualizarEstablecimiento = async (req: Request, res: Response) => {
 
     // Actualizar los datos del establecimiento existente con los nuevos datos
     await Establecimiento.findOneAndUpdate(
-      { ESTABLECIMIENTO_ID: id },
+      { ESTABLECIMIENTO_ID: Number(ESTABLECIMIENTO_ID) },
       datosActualizados
     );
 
@@ -104,15 +104,15 @@ const ActualizarEstablecimiento = async (req: Request, res: Response) => {
     res.status(500).json({ error: "Error interno del servidor" });
   }
 };
-
 // Controlador para desactivar un establecimiento por ID
+
 const DesactivarEstablecimiento = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params; // Obtiene el ID del establecimiento de los parámetros de la solicitud
+    const { ESTABLECIMIENTO_ID } = req.params; // Obtiene el ID del establecimiento de los parámetros de la solicitud
 
     // Verificar si el establecimiento con el ID dado existe
     const establecimientoExistente = await Establecimiento.findOne({
-      ESTABLECIMIENTO_ID: id,
+      ESTABLECIMIENTO_ID: Number(ESTABLECIMIENTO_ID),
     });
 
     if (!establecimientoExistente) {
@@ -122,7 +122,7 @@ const DesactivarEstablecimiento = async (req: Request, res: Response) => {
 
     // Cambiar el estado del establecimiento a FALSE en lugar de eliminarlo
     await Establecimiento.findOneAndUpdate(
-      { ESTABLECIMIENTO_ID: id },
+      { ESTABLECIMIENTO_ID: Number(ESTABLECIMIENTO_ID) },
       { ESTADO: false }
     );
 
@@ -134,6 +134,7 @@ const DesactivarEstablecimiento = async (req: Request, res: Response) => {
     res.status(500).json({ error: "Error interno del servidor" });
   }
 };
+
 
 export {
   CrearEstablecimiento,

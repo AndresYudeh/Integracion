@@ -59,6 +59,7 @@ export class Usuarios {
   // Repostaje
   export class Repostajes {
     constructor(
+      public REPOSTAJE_ID: number,
       public REPOSTAJE_KMAC: number,
       public REPOSTAJE_COMENTARIO: string,
       public ESTADO: boolean,
@@ -72,10 +73,11 @@ export class Usuarios {
   // Mantenimientos
   export class Mantenimientos {
     constructor(
+      public MANTENIMIENTO_ID: number,
       public MANTENIMIENTO_KMAC: number,
       public MANTENIMIENTO_KMPROX: number,
       public MANTENIMIENTO_COMENTARIO: string,
-      public MANTENIMIENTO_FECHA: string,
+      public MANTENIMIENTO_FECHA: Date,
       public MANTENIMIENTO_IMAGEN: string,
       public MANTENIMIENTO_IMAGEN2: string,
       public ESTADO: boolean,

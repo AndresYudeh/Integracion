@@ -20,6 +20,9 @@ import { WelcomeComponent } from './Modulos/welcome/welcome.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PrincipalComponent } from './Modulos/principal/principal.component';
 import { InicioSesionComponent } from './Modulos/inicio-sesion/inicio-sesion.component';
+import { VermantenimientosComponent } from './Modulos/vermantenimientos/vermantenimientos.component';
+import { RepostajesComponent } from './Modulos/repostajes/repostajes.component';
+import { VerrepostajesComponent } from './Modulos/verrepostajes/verrepostajes.component';
 
 
 
@@ -28,6 +31,9 @@ const routes:Routes=[
   {path: 'inicio', component: WelcomeComponent, pathMatch: 'full'  },
   {path: 'inicio-sesion', component: InicioSesionComponent, pathMatch: 'full'  },
   {path: 'principal/:User', component: PrincipalComponent, pathMatch: 'full'},
+  {path: 'vermantenimientos', component: VermantenimientosComponent, pathMatch: 'full'  },
+  {path: 'repostajes', component: RepostajesComponent, pathMatch: 'full'  },
+  {path: 'verrepostajes', component: VerrepostajesComponent, pathMatch: 'full'  },
 ]
 
 @NgModule({
@@ -35,7 +41,10 @@ const routes:Routes=[
     AppComponent,
     WelcomeComponent,
     PrincipalComponent,
-    InicioSesionComponent
+    InicioSesionComponent,
+    VermantenimientosComponent,
+    RepostajesComponent,
+    VerrepostajesComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +64,7 @@ const routes:Routes=[
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
 
 
 

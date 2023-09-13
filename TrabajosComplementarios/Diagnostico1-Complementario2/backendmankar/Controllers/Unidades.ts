@@ -82,30 +82,26 @@ const CrearUnidad = async (req: Request, res: Response) => {
 // Controlador para actualizar una unidad existente
 const ActualizarUnidad = async (req: Request, res: Response) => {
   try {
-    const { UNIDADES_PLACA } = req.params; // Obtiene la placa de la unidad de los parámetros de la solicitud
-    const datosActualizados: Unidades = req.body; // Obtiene los datos actualizados de la unidad del cuerpo de la solicitud
+    const { UNIDADES_PLACA } = req.params;
+    const datosActualizados: Unidades = req.body;
 
-    // Verificar si la unidad con la placa dada existe
     const unidadExistente: Unidades | null = await Unidad.findOne({
       UNIDADES_PLACA,
     });
 
     if (!unidadExistente) {
-      // Si la unidad no se encuentra, devuelve un mensaje de error
       return res.status(404).json({ mensaje: "Unidad no encontrada" });
     }
 
-    // Actualizar los datos de la unidad existente con los nuevos datos
     await Unidad.findOneAndUpdate({ UNIDADES_PLACA }, datosActualizados);
 
-    // Devolver un mensaje de éxito
     res.status(200).json({ mensaje: "Unidad actualizada correctamente" });
   } catch (error) {
-    // En caso de error, manejarlo y devolver una respuesta de error
     console.error("Error al actualizar la unidad:", error);
     res.status(500).json({ error: "Error interno del servidor" });
   }
 };
+
 
 // Controlador para desactivar una unidad cambiando su estado a FALSE
 const DesactivarUnidad = async (req: Request, res: Response) => {

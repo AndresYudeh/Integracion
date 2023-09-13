@@ -1,27 +1,38 @@
 import { Mantenimientos } from "../Interfaces";
 import { Request, Response } from "express";
 import { Mantenimiento } from "../models";
-
-// Controlador para crear un nuevo mantenimiento
-const CrearMantenimiento = async (req: Request, res: Response) => {
-  try {
-    // Obtener los datos del mantenimiento del cuerpo de la solicitud
-    const nuevoMantenimiento: Mantenimientos = req.body;
-
-    // Crear un nuevo mantenimiento en la base de datos
-    const mantenimientoCreado: Mantenimientos = await Mantenimiento.create(
-      nuevoMantenimiento
-    );
-
-    // Devolver el mantenimiento creado en la respuesta JSON
-    res.status(201).json(mantenimientoCreado);
-  } catch (error) {
-    // En caso de error, manejarlo y devolver una respuesta de error
-    console.error("Error al crear un mantenimiento:", error);
-    res.status(500).json({ error: "Error interno del servidor" });
-  }
-};
-
+import mongoose, { ClientSession } from 'mongoose'; 
+// Controlador para crear un nuevo mantenimientoconst CrearMantenimiento = async (req: Request, res: Response) => {
+  const CrearMantenimiento = async (req: Request, res: Response) => {
+    try {
+      // Obtener los datos del mantenimiento del cuerpo de la solicitud
+      const nuevoMantenimiento: Mantenimientos = req.body;
+  
+      // Consultar si ya existe un mantenimiento con el mismo MANTENIMIENTO_ID (si es relevante para tu aplicación)
+      const mantenimientoExistente: Mantenimientos | null = await Mantenimiento.findOne({
+        MANTENIMIENTO_ID: nuevoMantenimiento.MANTENIMIENTO_ID,
+      });
+  
+      if (mantenimientoExistente) {
+        // Si ya existe un mantenimiento con el mismo ID, devuelve un mensaje de error
+        return res.status(400).json({ error: "El mantenimiento ya existe" });
+      }
+  
+      // Crear un nuevo mantenimiento en la base de datos
+      const mantenimientoCreado: Mantenimientos = await Mantenimiento.create(
+        nuevoMantenimiento
+      );
+  
+      // Devolver el mantenimiento creado en la respuesta JSON
+      res.status(201).json(mantenimientoCreado);
+    } catch (error) {
+      // En caso de error, manejarlo y devolver una respuesta de error
+      console.error("Error al crear un mantenimiento:", error);
+      res.status(500).json({ error: "Error interno del servidor" });
+    }
+  };
+  
+ 
 // Controlador para obtener todos los mantenimientos
 const BuscarMantenimientos = async (req: Request, res: Response) => {
   try {
@@ -46,19 +57,17 @@ const BuscarMantenimientos = async (req: Request, res: Response) => {
     console.error("Error al buscar mantenimientos:", error);
     res.status(500).json({ error: "Error interno del servidor" });
   }
-};
-
-// Controlador para obtener un mantenimiento específico por ID
-const BuscarMantenimientoPorID = async (req: Request, res: Response) => {
+};// Controlador para obtener un mantenimiento específico por MANTENIMIENTO_ID
+/* const BuscarMantenimientoPorID = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params; // Obtiene el ID del mantenimiento de los parámetros de la solicitud
+    const { id } = req.params; // Obtiene el MANTENIMIENTO_ID del mantenimiento de los parámetros de la solicitud
 
-    // Realiza la búsqueda del mantenimiento por ID excluyendo los mantenimientos con estado FALSE
+    // Realiza la búsqueda del mantenimiento por MANTENIMIENTO_ID excluyendo los mantenimientos con estado FALSE
     const mantenimientoEncontrado: Mantenimientos | null =
-      await Mantenimiento.findById({
-       id
+      await Mantenimiento.findOne({
+        MANTENIMIENTO_ID: id,
+        ESTADO: true,
       });
-      res.json(mantenimientoEncontrado);
 
     if (!mantenimientoEncontrado) {
       // Si no se encuentra el mantenimiento, devuelve un mensaje de error
@@ -66,25 +75,47 @@ const BuscarMantenimientoPorID = async (req: Request, res: Response) => {
     }
 
     // Si se encuentra el mantenimiento, lo devuelve en la respuesta JSON
-   
+    res.json(mantenimientoEncontrado);
+
   } catch (error) {
     // En caso de error, manejarlo y devolver una respuesta de error
-    console.error("Error al buscar el mantenimiento por ID:", error);
+    console.error("Error al buscar el mantenimiento por MANTENIMIENTO_ID:", error);
     res.status(500).json({ error: "Error interno del servidor" });
   }
-};
+}; */
 
-// Controlador para actualizar un mantenimiento por ID
+const BuscarMantenimientoPorID = async (req: Request, res: Response) => {
+  try {
+    // Obtener el MANTENIMIENTO_ID de los parámetros de la solicitud
+    const { MANTENIMIENTO_ID } = req.params;
+
+    // Buscar el mantenimiento por MANTENIMIENTO_ID en la base de datos
+    const mantenimiento = await Mantenimiento.findOne({
+      MANTENIMIENTO_ID: Number(MANTENIMIENTO_ID),
+    });
+
+    if (!mantenimiento) {
+      // Si no se encuentra el mantenimiento, devuelve un mensaje de error
+      return res.status(404).json({ error: 'Mantenimiento no encontrado' });
+    }
+
+    // Devolver el mantenimiento encontrado en la respuesta JSON
+    res.status(200).json(mantenimiento);
+  } catch (error) {
+    // En caso de error, manejarlo y devolver una respuesta de error
+    console.error('Error al buscar un mantenimiento por ID:', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+};
 const ActualizarMantenimiento = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params; // Obtiene el ID del mantenimiento de los parámetros de la solicitud
-    const datosActualizados: Mantenimientos = req.body; // Obtiene los datos actualizados del mantenimiento del cuerpo de la solicitud
+    const { MANTENIMIENTO_ID } = req.params; // Obtiene el MANTENIMIENTO_ID del mantenimiento de los parámetros de la solicitud
+    const datosActualizados = req.body; // Obtiene los datos actualizados del mantenimiento del cuerpo de la solicitud
 
-    // Verificar si el mantenimiento con el ID dado existe
-    const mantenimientoExistente: Mantenimientos | null =
-      await Mantenimiento.findOne({
-        _id: id,
-      });
+    // Verificar si el mantenimiento con el MANTENIMIENTO_ID dado existe
+    const mantenimientoExistente = await Mantenimiento.findOne({
+      MANTENIMIENTO_ID: Number(MANTENIMIENTO_ID),
+    });
 
     if (!mantenimientoExistente) {
       // Si el mantenimiento no se encuentra, devuelve un mensaje de error
@@ -92,24 +123,29 @@ const ActualizarMantenimiento = async (req: Request, res: Response) => {
     }
 
     // Actualizar los datos del mantenimiento existente con los nuevos datos
-    await Mantenimiento.findOneAndUpdate({ _id: id }, datosActualizados);
+    await Mantenimiento.findOneAndUpdate(
+      { MANTENIMIENTO_ID: Number(MANTENIMIENTO_ID) },
+      datosActualizados
+    );
 
     // Devolver un mensaje de éxito
     res.status(200).json({ mensaje: "Mantenimiento actualizado correctamente" });
   } catch (error) {
     // En caso de error, manejarlo y devolver una respuesta de error
-    console.error("Error al actualizar el mantenimiento:", error);
+    console.error("Error al actualizar el mantenimiento por MANTENIMIENTO_ID:", error);
     res.status(500).json({ error: "Error interno del servidor" });
   }
 };
 
-// Controlador para desactivar un mantenimiento por ID
+// Controlador para desactivar un mantenimiento por MANTENIMIENTO_ID
 const DesactivarMantenimiento = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params; // Obtiene el ID del mantenimiento de los parámetros de la solicitud
+    const { MANTENIMIENTO_ID } = req.params; // Obtiene el MANTENIMIENTO_ID del mantenimiento de los parámetros de la solicitud
 
-    // Verificar si el mantenimiento con el ID dado existe
-    const mantenimientoExistente = await Mantenimiento.findOne({ _id: id });
+    // Verificar si el mantenimiento con el MANTENIMIENTO_ID dado existe
+    const mantenimientoExistente = await Mantenimiento.findOne({
+      MANTENIMIENTO_ID: Number(MANTENIMIENTO_ID),
+    });
 
     if (!mantenimientoExistente) {
       // Si el mantenimiento no se encuentra, devuelve un mensaje de error
@@ -117,13 +153,16 @@ const DesactivarMantenimiento = async (req: Request, res: Response) => {
     }
 
     // Cambiar el estado del mantenimiento a FALSE en lugar de eliminarlo
-    await Mantenimiento.findOneAndUpdate({ _id: id }, { ESTADO: false });
+    await Mantenimiento.findOneAndUpdate(
+      { MANTENIMIENTO_ID: Number(MANTENIMIENTO_ID) },
+      { ESTADO: false }
+    );
 
     // Devolver un mensaje de éxito
     res.status(200).json({ mensaje: "Mantenimiento desactivado correctamente" });
   } catch (error) {
     // En caso de error, manejarlo y devolver una respuesta de error
-    console.error("Error al desactivar el mantenimiento:", error);
+    console.error("Error al desactivar el mantenimiento por MANTENIMIENTO_ID:", error);
     res.status(500).json({ error: "Error interno del servidor" });
   }
 };

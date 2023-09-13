@@ -8,12 +8,12 @@ const { BuscarMantenimientos, BuscarMantenimientoPorID, CrearMantenimiento, Actu
 const router = (0, express_1.Router)();
 exports.router = router;
 router.get('/', BuscarMantenimientos);
-router.get('/:_id', BuscarMantenimientoPorID);
+router.get('/:MANTENIMIENTO_ID', BuscarMantenimientoPorID);
 router.post('/', [
     (0, express_validator_1.check)('MANTENIMIENTO_KMAC', 'El valor de los kilómetros actuales es obligatorio.').not().isEmpty(),
     (0, express_validator_1.check)('MANTENIMIENTO_KMPROX', 'El valor de los kilómetros próximos es obligatorio.').not().isEmpty(),
     (0, express_validator_1.check)('UNIDADES_PLACA', 'La placa de la unidad es obligatoria.').not().isEmpty(),
     (0, express_validator_1.check)('TIPOSMANTE_ID', 'El ID del tipo de mantenimiento es obligatorio.').not().isEmpty(),
 ], CrearMantenimiento);
-router.put('/:_id', ActualizarMantenimiento);
-router.delete('/:_id', DesactivarMantenimiento);
+router.put('/:MANTENIMIENTO_ID', ActualizarMantenimiento);
+router.delete('/:MANTENIMIENTO_ID', DesactivarMantenimiento);

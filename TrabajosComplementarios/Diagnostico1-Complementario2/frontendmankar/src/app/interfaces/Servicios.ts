@@ -76,12 +76,14 @@ export interface RespUsuarios {
   export interface Repostajes {
     _id?: string;
     __v?: number;
+    REPOSTAJE_ID: number;
     REPOSTAJE_KMAC: number;
     REPOSTAJE_COMENTARIO: string;
     ESTADO: boolean;
     UNIDADES_PLACA: string;
     RUTAS_ID: number;
   }
+  
   
   // Mantenimientos
   export interface RespMantenimientos {
@@ -92,6 +94,7 @@ export interface RespUsuarios {
   export interface Mantenimientos {
     _id?: string;
     __v?: number;
+    MANTENIMIENTO_ID: number;
     MANTENIMIENTO_KMAC: number;
     MANTENIMIENTO_KMPROX: number;
     MANTENIMIENTO_COMENTARIO: string;

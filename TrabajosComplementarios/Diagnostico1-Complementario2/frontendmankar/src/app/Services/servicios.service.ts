@@ -135,7 +135,9 @@ import {
     deleteRepostaje(id: string) {
       return this.http.delete<Repostajes>(`${this.apiUrl}/repostajes/${id}`);
     }
-
+    getUltimoRepostajeId() {
+      return this.http.get<number>(`${this.apiUrl}/repostajes/ultimo-id`);
+    }
   
     // Mantenimientos
     getMantenimientos() {
