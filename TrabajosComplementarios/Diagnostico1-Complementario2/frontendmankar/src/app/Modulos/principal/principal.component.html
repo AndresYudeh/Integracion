@@ -1,0 +1,177 @@
+<body class="container-fluid" >
+
+  <nav class=" container-fluid navbar " >
+    <div class="container-fluid">
+      <a href="#" class="navbar-brand logo">APPWEB MANKAR</a>
+       <div class="d-flex">
+        <button class="btn btn-primary mx-4" type="submit">Hola {{ Usuario.USUARIO_NOMBRE }}</button>
+
+     <!--    <button class="btn btn-secondary mx-4"type="submit" (click)="VerReservas()">Ver mis Reservas</button> -->
+        <a href="inicio" class="btn btn-danger " type="submit"  >Cerrar Sesion</a>
+       </div>
+    </div>
+  </nav>
+
+  <div class="container-mg">
+      <ul class="row align-items-center bg-primary" style="margin-top: 3rem;">
+          <li class="col"><a href=#><span class="icon"><i class="bi bi-card-checklist"></i></span><span class="name">LUBRICADORA</span> </a ></li>
+          <li class="col"><a href=#><span class="icon"><i class="bi bi-car-front"></i></span><span class="name">LAVADORAS</span> </a></li>
+          </ul>
+  </div> 
+  <div style="margin-bottom: 20px;"></div>
+
+  <div class="container-lg mb-8" id="services-cards">
+      <div class="card m-2">
+
+        <div class="row">
+
+        <div class="container mb-3">
+
+          <form (ngSubmit)="agregarMantenimiento()" #mantenimientoForm="ngForm"  class="mx-5 my-3">
+            <h2>Agregar Mantenimiento</h2>
+          
+            <div class="mb-3">
+              <label for="kmac" class="form-label">Kilómetros Actuales</label>
+              <div class="input-group">
+                <input type="number" id="kmac" name="kmac" [(ngModel)]="nuevoMantenimiento.MANTENIMIENTO_KMAC" class="form-control small-input" required>
+              </div>
+            </div>
+          
+            <div class="mb-3">
+              <label for="kmprox" class="form-label">Kilómetros Próximos</label>
+              <input type="number" id="kmprox" name="kmprox" [(ngModel)]="nuevoMantenimiento.MANTENIMIENTO_KMPROX" class="form-control" required>
+            </div>
+          
+            <div class="mb-3">
+              <label for="comentario" class="form-label">Comentario</label>
+              <textarea id="comentario" name="comentario" [(ngModel)]="nuevoMantenimiento.MANTENIMIENTO_COMENTARIO" class="form-control" required placeholder="Ingrese los comentarios relacionados al mantenimiento realizado"></textarea>
+            </div>
+          
+            <div class="mb-3">
+              <label for="fecha" class="form-label">Fecha</label>
+              <input type="date" id="fecha" name="fecha" [(ngModel)]="nuevoMantenimiento.MANTENIMIENTO_FECHA" class="form-control" required
+                [value]="nuevoMantenimiento.MANTENIMIENTO_FECHA | date:'yyyy-MM-dd'">
+            </div>
+            
+          
+            <div class="mb-3">
+              <label for="imagen" class="form-label">URL de la Imagen</label>
+              <input type="text" id="imagen" name="imagen" [(ngModel)]="nuevoMantenimiento.MANTENIMIENTO_IMAGEN" class="form-control" required>
+            </div>
+          
+            <div class="mb-3">
+              <label for="imagen2" class="form-label">URL de la Segunda Imagen</label>
+              <input type="text" id="imagen2" name="imagen2" [(ngModel)]="nuevoMantenimiento.MANTENIMIENTO_IMAGEN2" class="form-control" required>
+            </div>
+          
+            <div class="mb-3">
+              <label for="estado" class="form-label">Estado</label>
+              <input type="checkbox" id="estado" name="estado" [(ngModel)]="nuevoMantenimiento.ESTADO" class="form-check-input">
+            </div>
+          
+            <div class="mb-3">
+              <label for="placa" class="form-label">Placa del Vehículo</label>
+              <input type="text" id="placa" name="placa" [(ngModel)]="nuevoMantenimiento.UNIDADES_PLACA" class="form-control" [value]="placaPredefinida" readonly>
+            </div>
+            
+            
+          
+            <div class="mb-3">
+              <label for="tipoMantenimiento" class="form-label">Tipo de Mantenimiento</label>
+              <select id="tipoMantenimiento" name="tipoMantenimiento" [(ngModel)]="selectedTipoMantenimiento" class="form-select" required>
+                <option *ngFor="let tipo of tiposMantenimiento" [value]="tipo">{{ tipo }}</option>
+              </select>
+            </div>
+            
+            
+          
+            <button class="btn btn-primary" type="submit">Agregar Mantenimiento</button>
+          </form>
+         
+
+      </div>
+
+      </div>
+    </div>
+
+<div>
+
+
+  <div class="container-lg mb-8" id="mantenimientos-list">
+    <h2>Listado de Mantenimientos</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Kilómetros Actuales</th>
+          <th>Kilómetros Próximos</th>
+          <th>Comentario</th>
+          <th>Fecha</th>
+          <th>Imagen</th>
+          <th>Imagen2</th>
+          <th>Estado</th>
+          <th>Placa del Vehículo</th>
+          <th>ID del Tipo de Mantenimiento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Utiliza *ngFor para iterar sobre la lista de mantenimientos y mostrarlos en la tabla -->
+        <tr *ngFor="let Mantenimiento of Mantenimiento">
+          <td>{{ Mantenimiento._id}}</td>
+          <td>{{ Mantenimiento.MANTENIMIENTO_KMAC }}</td>
+          <td>{{ Mantenimiento.MANTENIMIENTO_KMPROX }}</td>
+          <td>{{ Mantenimiento.MANTENIMIENTO_COMENTARIO }}</td>
+          <td>{{ Mantenimiento.MANTENIMIENTO_FECHA }}</td>
+          <td>{{ Mantenimiento.MANTENIMIENTO_IMAGEN }}</td>
+          <td>{{ Mantenimiento.MANTENIMIENTO_IMAGEN2 }}</td>
+          <td>{{ Mantenimiento.ESTADO }}</td>
+          <td>{{ Mantenimiento.UNIDADES_PLACA }}</td>
+          <td>{{ Mantenimiento.TIPOSMANTE_ID}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+          <!-- ------------------------------------RESERVA-------------------------------------------- -->
+
+          <!-- 
+          <div class="card" *ngIf="Mantenimientong">
+            <div class="row align-items-start" *ngFor="let reserva of Mantenimiento">
+    
+              <div class="col ">
+                <p> <strong> RESERVACION <br>N: {{reserva.RESERVACION_ID}}</strong><br>  CLIENTE: {{reserva.CLIENTE_CEDULA}}</p>
+              </div>
+              <div class="col">
+                <p>SERVICIO ID: {{reserva.SERVICIO_ID}} </p>
+              </div>
+              <div class="col">
+                <p> ESTABLECIMIENTO ID: {{reserva.ESTABLECIMIENTO_ID}} </p>
+              </div>
+              <div class="col">
+                <p>TOTAL A PAGAR: <br> $ {{reserva.RESERVACION_PRECIO}} </p>
+              </div>
+              <div class="col">
+                <p>FECHA: <br> {{reserva.RESERVACION_FECHA}} </p>
+              </div>
+              <div class="col">
+                <p>HORA: {{reserva.RESERVACION_HORA}} </p>
+              </div>
+              <div class="col">
+                <p>PLACA: <br> {{reserva.CARRO_PLACA}} </p>
+              </div>
+    
+              <div class="col align-items-center">
+                <a  class="btn btn-success"(click)="EliminarReserva(reserva.RESERVACION_ID)"> ELIMINAR</a>
+              </div>
+            </div>
+          </div> -->
+</div>
+
+  </div>
+
+  <footer class="row">
+    <p class="mb-0 w-100 text-center col-12">
+    &copy; The Backyardigans </p>
+  </footer>
+
+
+</body>

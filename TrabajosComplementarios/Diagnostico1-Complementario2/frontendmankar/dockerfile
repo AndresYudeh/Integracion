@@ -1,0 +1,12 @@
+FROM node as build-step
+RUN mkdir -p /app
+WORKDIR /app
+COPY package.json /app
+RUN npm install
+COPY . /app
+#RUN ng serve -o
+#segunda etapa
+RUN npm run build --prod
+
+FROM nginx
+COPY  --from=build-step /app/dist/frontend-mankar-angular /usr/share/nginx/html

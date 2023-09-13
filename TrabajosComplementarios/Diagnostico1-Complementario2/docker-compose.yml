@@ -1,0 +1,26 @@
+version: '1.0'
+
+services:
+  mongo:
+    image: 'mongo'
+    ports:
+      - 27017:27017
+
+  backend:
+    build: ./backendmankar
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./backendmankar:/Index
+    depends_on:
+      - mongo
+
+  frontend:
+    build: 
+      context: ./frontendmankar
+      dockerfile: dockerfile
+    ports:
+      - '8080:8080'
+    restart: always
+    depends_on:
+      - backend

@@ -1,0 +1,191 @@
+<body>
+  <nav class=" container-fluid navbar bg-primary">
+    <div class="container-fluid">
+      <a href="http://localhost:4200/" class="navbar-brand logo">APPWEB SEXTO A</a>
+
+      <div class="d-flex">
+        <a class="btn btn-dark" href="/admin" type="submit">CONSULTAS DE DATOS</a>
+       </div>
+       
+      <div class="d-flex">
+        <a class="btn btn-primary" href="http://localhost:4200/" type="submit">INTERFAZ USUARIO</a>
+      </div>
+
+      
+    </div>
+  </nav>
+
+  <div class="d-flex" id="content-wrapper">
+
+      <!-- Sidebar -->
+      <div id="sidebar-container" class="bg-primary">
+        <div class="menu">
+            <a href="admin/rgtrab" class="d-block text-light p-3 border-0"><i class="bi bi-arrow-repeat"></i>
+              <span class="name"> REGISTRO TRABAJADORES </span></a>
+        </div>
+      </div>
+
+    <!-- SERVICIOS FORMULARIO -->
+   <div class="row row-cols-2">
+
+    
+    <div class="col container formulario ">
+      <h2> SERVICIOS</h2>
+      <form>
+        <div class="mb-3">
+          <label class="form-label">ID de servicio</label>
+          <input type="text" name="id" [(ngModel)]="ServicioModel.SERVICIO_ID" #id class="form-control"
+            placeholder="ID tipo numerico">
+
+        </div>
+
+
+        <div class="mb-3">
+          <label class="form-label">Nombre del servicio</label>
+          <input type="text" name="name" [(ngModel)]="ServicioModel.SERVICIO_NOMBRE" #name class="form-control"
+            placeholder="Nombre Servicio">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Precio del servicio</label>
+          <input type="text" name="pre" [(ngModel)]="ServicioModel.SERVICIO_PRECIO" #pre class="form-control"
+            placeholder="Precio de servico en numerico">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Tiempo de servicio</label>
+          <input type="text" name="time" [(ngModel)]="ServicioModel.SERVICIO_TIEMPO" #time class="form-control"
+            placeholder="Tiempo de servico en String">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Nombre del establecimiento</label>
+          <input type="text" name="ename" [(ngModel)]="ServicioModel.ESTABLECIMIENTO_NOMBRE" #ename class="form-control"
+            placeholder="Nombre del establecimiento del establecimiento">
+        </div>
+
+
+        <div class="mb-3">
+          <button type="submit" (click)="RegistroServicio()" class="btn btn-primary mx-2">GUARDAR DATOS</button>
+          <button type="submit" (click)="ActualizarServicio()" class="btn btn-primary">ACTUALIZAR DATOS</button>
+        </div>
+      </form>
+
+    </div>
+    <!-- ---------------------------------------------------------------------------- -->
+    <!-- CARROS FORMULARIO -->
+    <div class="container formulario col">
+      <h2> VEHICULOS</h2>
+      <form>
+
+        <div class="mb-3">
+          <label class="form-label">Placa del carro</label>
+          <input type="text" name="id" [(ngModel)]="CarrosModel.CARRO_PLACA" #id class="form-control"
+            placeholder="Placa del carro">
+
+        </div>
+
+
+        <div class="mb-3">
+          <label class="form-label">Modelo del Carro</label>
+          <input type="text" name="name" [(ngModel)]="CarrosModel.CARRO_MODELO" #name class="form-control"
+            placeholder="Modelo del carro">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Año del Carro</label>
+          <input type="text" name="pre" [(ngModel)]="CarrosModel.CARRO_ANIO" #pre class="form-control"
+            placeholder="Año del carro">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Comentario del Carro</label>
+          <input type="text" name="time" [(ngModel)]="CarrosModel.CARRO_COMENTARIO" #time class="form-control"
+            placeholder="Comentario del Carro">
+        </div>
+
+        <div class="mb-3">
+          <button type="submit" (click)="RegistroCarros()" class="btn btn-primary mx-2">GUARDAR DATOS</button>
+          <button type="submit" (click)="ActualizarCarros()" class="btn btn-primary">ACTUALIZAR DATOS</button>
+        </div>
+      </form>
+    </div> 
+    <!-- ---------------------------------------------------------------------------- -->
+    <!-- CARROS ESTABLECIMIENTO -->
+    <div class="container formulario col">
+      <h2> ESTABLECIMIENTOS</h2>
+      <form>
+
+        <div class="mb-3">
+          <label class="form-label">ID del establecimiento</label>
+          <input type="text" name="id" [(ngModel)]="EstablecimientosModel.ESTABLECIMIENTO_ID" #id class="form-control"
+            placeholder="ID del establecimiento">
+
+        </div>
+
+
+        <div class="mb-3">
+          <label class="form-label">Nombre del establecimiento</label>
+          <input type="text" name="name" [(ngModel)]="EstablecimientosModel.ESTABLECIMIENTO_NOMBRE" #name class="form-control"
+            placeholder="Nombre del establecimiento">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Descripcion del establecimiento</label>
+          <input type="text" name="pre" [(ngModel)]="EstablecimientosModel.ESTABLECIMIENTO_DESCRIPCION" #pre class="form-control"
+            placeholder="Descripcion de establecimiento">
+        </div>
+
+        <div class="mb-3">
+          <button type="submit" (click)="RegistroEstablecimientos()" class="btn btn-primary mx-2">GUARDAR DATOS</button>
+          <button type="submit" (click)="ActualizarEstablecimientos()" class="btn btn-primary">ACTUALIZAR DATOS</button>
+        </div>
+      </form>
+    </div> 
+
+    <!-- ---------------------------------------------------------------------------- -->
+    <!-- CLIENTES -->
+    <div class="container formulario col">
+      <h2> CLIENTES</h2>
+      <form>
+
+        <div class="mb-3">
+          <label class="form-label">Nombre del cliente</label>
+          <input type="text" name="name" [(ngModel)]="ClientesModel.CLIENTE_NOMBRE" #CLIENTE_NOMBRE class="form-control"
+            placeholder="Nombre del cliente">
+
+        </div>
+
+
+        <div class="mb-3">
+          <label class="form-label">Cedula del cliente</label>
+          <input type="text" name="ced" [(ngModel)]="ClientesModel.CLIENTE_CEDULA" #CLIENTE_CEDULA class="form-control"
+            placeholder="Cedula del cliente">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Contraseña del cliente</label>
+          <input type="text" name="contra" [(ngModel)]="ClientesModel.CLIENTE_CONTRA" #CLIENTE_CONTRA class="form-control"
+            placeholder="Contraseña del cliente">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Telefono del cliente</label>
+          <input type="text" name="telf" [(ngModel)]="ClientesModel.CLIENTE_TELEFONO" #CLIENTE_TELEFONO class="form-control"
+            placeholder="Telefono del cliente">
+        </div>
+
+        <div class="mb-3">
+          <button type="submit" (click)="RegistroClientes()" class="btn btn-primary mx-2">GUARDAR DATOS</button>
+          <button type="submit" (click)="ActualizarClientes()" class="btn btn-primary">ACTUALIZAR DATOS</button>
+        </div>
+      </form>
+    </div> 
+
+   </div>
+    <!-- ---------------------------------------------------------------------------- -->
+
+
+  </div>
+
+</body>

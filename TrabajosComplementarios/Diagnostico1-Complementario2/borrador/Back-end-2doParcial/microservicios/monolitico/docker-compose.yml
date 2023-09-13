@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  api:
+    build: .
+    depends_on:
+      - mongo
+    environment:
+      - MONGODB_CNN=mongodb://mongo:27017/Prueba
+    ports:
+      - '3000:3000'
+  mongo:
+    image: mongo
+    command: mongod --quiet --logpath /dev/null

@@ -1,0 +1,148 @@
+<body class="container-fluid" >
+
+  <nav class=" container-fluid navbar " >
+    <div class="container-fluid">
+      <a href="#" class="navbar-brand logo">APPWEB SEXTO A</a>
+       <div class="d-flex">
+        <button class="btn btn-primary" type="submit"  >Hola {{Usuario.CLIENTE_NOMBRE}}</button>
+        <button class="btn btn-secondary mx-4"type="submit" (click)="VerReservas()">Ver mis Reservas</button>
+        <a href="inicio" class="btn btn-danger " type="submit"  >Cerrar Sesion</a>
+       </div>
+    </div>
+  </nav>
+
+  <div class="container-mg">
+      <ul class="row align-items-center bg-primary" style="margin-top: 3rem;">
+          <li class="col"><a (click)="MostrarServicios('Lubricadora')"><span class="icon"><i class="bi bi-speedometer"></i></span><span class="name">LUBRICADORA</span> </a ></li>
+          <li class="col"><a (click)="MostrarServicios('Lavado')"><span class="icon"><i class="bi bi-car-front"></i></span><span class="name">LAVADORAS</span> </a></li>
+          <li class="col"><a (click)="MostrarServicios('Mecanicos')"><span class="icon"><i class="bi bi-tools"></i></span><span class="name">MECANICOS</span> </a></li>
+          <li class="col"><a (click)="MostrarServicios('Enllantado')"><span class="icon"><i class="bi bi-cone-striped"></i></span><span class="name">ENLLANTADO</span> </a></li>
+          <li class="col"><a (click)="MostrarServicios('Pintura')"><span class="icon"><i class="bi bi-paint-bucket"></i></span><span class="name">PINTURA</span> </a></li>
+          <li class="col"><a (click)="mensaje()"><span class="icon"><i class="bi bi-arrow-repeat"></i></span><span class="name">PROXIMAMENTE</span> </a></li>
+      </ul>
+  </div> 
+
+
+
+
+  <div class="container-lg mb-8" id="services-cards">
+    
+
+  <div  *ngIf="serviciong">
+
+    <div class="row align-items-start" *ngFor="let servicio of servicios">
+
+      <div class="card m-2">
+
+        <div class="row">
+
+          <div class="col-md-4 m-2 my-3">
+          <img src="../../../assets/images/imagenServicios/{{servicio.ESTABLECIMIENTO_NOMBRE}}.png"
+           alt="" class="img-fluid" />
+          </div>
+
+          <div class="col-md-6 align-self-center">
+            <div class="cardblock px2">
+              <h2 class="establecimiento">{{servicio.ESTABLECIMIENTO_NOMBRE}} </h2>
+              <p >{{servicio.ESTABLECIMIENTO_DESCRIPCION}} </p>
+              <h2> PRECIO : ${{servicio.SERVICIO_PRECIO}} </h2>
+            </div>  
+          </div>
+
+        <div class="container mb-3">
+
+          
+          
+          <form class="mx-5 my-3">
+            <div class="row row-cols-3">
+              <div class="mb-3">
+                <label  class="form-label"> TIEMPO DE TRABAJO</label>
+
+                <input type="text" name="name" [(ngModel)]="servicio.SERVICIO_TIEMPO" #name value="" class="form-control" placeholder=""disabled>
+              </div>
+              <div class="col">
+                <label class="form-label">CLIENTE CEDULA</label>
+                <input type="text" name="ced" [(ngModel)]="Usuario.CLIENTE_CEDULA" #ced class="form-control" placeholder="{{Usuario.CLIENTE_CEDULA}}" disabled>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">ID SERVICIO</label>
+                <input type="text" name="idser" [(ngModel)]="servicio.SERVICIO_ID" #idser class="form-control" placeholder="{{servicio.SERVICIO_ID}}" disabled> 
+              </div>
+              <div class="mb-3">
+                <label class="form-label">ID ESTABLECIMIENTO</label>
+                <input type="text" name="ename" [(ngModel)]="this.servicio.ESTABLECIMIENTO_ID" #ename class="form-control"  placeholder="{{this.servicio.ESTABLECIMIENTO_ID}}" disabled>
+              </div>
+              <div class="mb-3">
+                <label  class="form-label">RESERVACION PRECIO</label>
+                <input type="text" name="pre" [(ngModel)]="servicio.RESERVACION_PRECIO" #pre class="form-control" placeholder="{{servicio.SERVICIO_PRECIO}}" disabled>
+              </div>
+    
+              <div class="mb-3">
+                <label class="form-label">RESERVACION FECHA</label>
+                <input class="form-control" type="date" name="date" [(ngModel)]="ServicioModel.RESERVACION_FECHA" #date value="" placeholder="Select DateTime">
+                
+              </div>
+    
+              <div class="mb-3">
+                <label class="form-label">RESERVACION HORA</label>
+                <input type="time" name="time" [(ngModel)]="ServicioModel.RESERVACION_HORA" #time value="" class="form-control"> 
+              </div>
+              <div class="mb-3">
+                <label class="form-label">CARRO PLACA</label>
+                <input type="text" name="car" [(ngModel)]="ServicioModel.CARRO_PLACA" #car class="form-control"  value="" placeholder="PLACA VEHICULO">
+              </div>
+              <div class="col text-center align-self-end" >
+                <button class="btn btn-danger " type="submit" (click)="GuardarReserva(name, ced, idser, ename, pre, date, time, car)" > RESERVAR  </button>
+                </div>
+              </div>
+            </form>
+
+      </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+          <!-- ------------------------------------RESERVA-------------------------------------------- -->
+          <div class="card" *ngIf="Reservang">
+            <div class="row align-items-start" *ngFor="let reserva of Reserva">
+    
+              <div class="col ">
+                <p> <strong> RESERVACION <br>N: {{reserva.RESERVACION_ID}}</strong><br>  CLIENTE: {{reserva.CLIENTE_CEDULA}}</p>
+              </div>
+              <div class="col">
+                <p>SERVICIO ID: {{reserva.SERVICIO_ID}} </p>
+              </div>
+              <div class="col">
+                <p> ESTABLECIMIENTO ID: {{reserva.ESTABLECIMIENTO_ID}} </p>
+              </div>
+              <div class="col">
+                <p>TOTAL A PAGAR: <br> $ {{reserva.RESERVACION_PRECIO}} </p>
+              </div>
+              <div class="col">
+                <p>FECHA: <br> {{reserva.RESERVACION_FECHA}} </p>
+              </div>
+              <div class="col">
+                <p>HORA: {{reserva.RESERVACION_HORA}} </p>
+              </div>
+              <div class="col">
+                <p>PLACA: <br> {{reserva.CARRO_PLACA}} </p>
+              </div>
+    
+              <div class="col align-items-center">
+                <a  class="btn btn-success"(click)="EliminarReserva(reserva.RESERVACION_ID)"> ELIMINAR</a>
+              </div>
+            </div>
+          </div>
+</div>
+
+  </div>
+
+  <footer class="row">
+    <p class="mb-0 w-100 text-center col-12">
+    &copy; The Backyardigans </p>
+  </footer>
+
+
+</body>

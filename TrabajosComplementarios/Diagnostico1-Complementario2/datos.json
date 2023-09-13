@@ -1,0 +1,250 @@
+SERVICIO {
+    {
+    "SERVICIO_ID":1,
+    "SERVICIO_NOMBRE":"Lubricadora",
+    "SERVICIO_PRECIO":10,
+    "SERVICIO_TIEMPO":"30 minutos",
+    "ESTABLECIMIENTO_NOMBRE":"MANKAR CENTER"
+    }
+    {
+    "SERVICIO_ID":2,
+    "SERVICIO_NOMBRE":"Lubricadora",
+    "SERVICIO_PRECIO":15,
+    "SERVICIO_TIEMPO":"30 minutos",
+    "ESTABLECIMIENTO_NOMBRE":"TALLER EL GATO"
+    }
+    {
+    "SERVICIO_ID":3,
+    "SERVICIO_NOMBRE":"Lubricadora",
+    "SERVICIO_PRECIO":15,
+    "SERVICIO_TIEMPO":"30 minutos",
+    "ESTABLECIMIENTO_NOMBRE":"Taller don Pepe"
+    }
+    {
+    "SERVICIO_ID":4,
+    "SERVICIO_NOMBRE":"Lavado",
+    "SERVICIO_PRECIO":7,
+    "SERVICIO_TIEMPO":"30 minutos",
+    "ESTABLECIMIENTO_NOMBRE":"Taller el chino"
+    }
+    {
+    "SERVICIO_ID":5,
+    "SERVICIO_NOMBRE":"Lavado",
+    "SERVICIO_PRECIO":8,
+    "SERVICIO_TIEMPO":"35 minutos",
+    "ESTABLECIMIENTO_NOMBRE":"Taller 5-0"
+    }
+    {
+        "SERVICIO_ID":6,
+        "SERVICIO_NOMBRE":"Pintura",
+        "SERVICIO_PRECIO":8,
+        "SERVICIO_TIEMPO":"35 minutos",
+        "ESTABLECIMIENTO_NOMBRE":"Taller 5-0"
+    }
+    {
+        "SERVICIO_ID":7,
+        "SERVICIO_NOMBRE":"Enllantado",
+        "SERVICIO_PRECIO":8,
+        "SERVICIO_TIEMPO":"35 minutos",
+        "ESTABLECIMIENTO_NOMBRE":"MANKAR CENTER"
+    }
+
+
+}
+
+ESTABLECIMIENTOS {
+    {
+        "ESTABLECIMIENTO_ID":1,
+        "ESTABLECIMIENTO_NOMBRE":"MANKAR CENTER",
+        "ESTABLECIMIENTO_DESCRIPCION":"ESTABLECIMIENTO CERTIFICADO DE REPARACION, LUBRICADO , MECANICA. PROFESIONALES EN TRAILERS "
+    },
+    {
+        "ESTABLECIMIENTO_ID":2,
+        "ESTABLECIMIENTO_NOMBRE":"TALLER EL GATO",
+        "ESTABLECIMIENTO_DESCRIPCION":"ESTABLECIMIENTO ESPECIALIZADO EN REPARACION DE MOTORES A DIESEL"
+    },
+    {
+        "ESTABLECIMIENTO_ID":3,
+        "ESTABLECIMIENTO_NOMBRE":"Taller don Pepe",
+        "ESTABLECIMIENTO_DESCRIPCION":"ESTABLECIMIENTO ESPECIALIZADO EN VEHÍCULOS PESADOS"
+    },
+    {
+        "ESTABLECIMIENTO_ID":4,
+        "ESTABLECIMIENTO_NOMBRE":"Taller el chino",
+        "ESTABLECIMIENTO_DESCRIPCION":"ESTABLECIMIENTO CERTIFICADO EN LUBRICADO , MECANICA Y PINTURA. PROFESIONALES EN VEHÍCULOS LIVIANOS"
+    },
+    {
+        "ESTABLECIMIENTO_ID":5,
+        "ESTABLECIMIENTO_NOMBRE":"Taller 5-0",
+        "ESTABLECIMIENTO_DESCRIPCION":"LAVADA Y PULIDA DE VEHICULOS, CAMIONES, TRAILLERS y BUSES"
+    }
+}
+
+
+Trabajadores{
+    {
+        "TRABAJADOR_NOMBRE": "Juan",
+        "TRABAJADOR_APELLIDO": "Santos",
+        "TRABAJADOR_CEDULA": "13598741778",
+        "TRABAJADOR_TELEFONO": "0987458967",
+        "TRABAJADOR_CARGO": "Maestro vulcanizador"
+    },
+    {
+        "TRABAJADOR_NOMBRE": "Pedro",
+        "TRABAJADOR_APELLIDO": "Cedeño",
+        "TRABAJADOR_CEDULA": "1308794126",
+        "TRABAJADOR_TELEFONO": "0987432147",
+        "TRABAJADOR_CARGO": "Maestro de pintura"
+    },
+    {
+        "TRABAJADOR_NOMBRE": "Karla",
+        "TRABAJADOR_APELLIDO": "Macias",
+        "TRABAJADOR_CEDULA": "1358796303",
+        "TRABAJADOR_TELEFONO": "09745314769",
+        "TRABAJADOR_CARGO": "Maestra de engrasado"
+    },
+    {
+        "TRABAJADOR_NOMBRE": "Bryan",
+        "TRABAJADOR_APELLIDO": "García",
+        "TRABAJADOR_CEDULA": "18274986368",
+        "TRABAJADOR_TELEFONO": "0934785130",
+        "TRABAJADOR_CARGO": "Maestro electrónico"
+    },
+    {
+        "TRABAJADOR_NOMBRE": "Teresa",
+        "TRABAJADOR_APELLIDO": "Castro",
+        "TRABAJADOR_CEDULA": "1314789736",
+        "TRABAJADOR_TELEFONO": "09745314769",
+        "TRABAJADOR_CARGO": "Maestro de engrasado"
+    },
+    {
+        "TRABAJADOR_NOMBRE": "Jhon",
+        "TRABAJADOR_APELLIDO": "Rodriguez",
+        "TRABAJADOR_CEDULA": "1570856741",
+        "TRABAJADOR_TELEFONO": "0987453214",
+        "TRABAJADOR_CARGO": "Lavador"
+    }
+}
+
+Clientes{
+    {
+        "CLIENTE_NOMBRE": "Marcos Zambrano",
+        "CLIENTE_CEDULA": "1302541360",
+        "CLIENTE_TELEFONO": "0978471350",
+        "CLIENTE_CONTRA": "123456789"
+    },
+    {
+        "CLIENTE_NOMBRE": "Klever Lopez",
+        "CLIENTE_CEDULA": "1247425867",
+        "CLIENTE_TELEFONO": "0987456981",
+        "CLIENTE_CONTRA": "123456789"
+    },
+    {
+        "CLIENTE_NOMBRE": "Andres Palma",
+        "CLIENTE_CEDULA": "1347536987",
+        "CLIENTE_TELEFONO": "0957416985",
+        "CLIENTE_CONTRA": "123456789"
+    },
+    {
+        "CLIENTE_NOMBRE": "Ana Cobeña",
+        "CLIENTE_CEDULA": "1347621498",
+        "CLIENTE_TELEFONO": "0961475824",
+        "CLIENTE_CONTRA": "123456789"
+    },
+    {
+        "CLIENTE_NOMBRE": "Maria Santos",
+        "CLIENTE_CEDULA": "1328471246",
+        "CLIENTE_TELEFONO": "0921468307",
+        "CLIENTE_CONTRA": "123456789"
+    },
+    {
+        "CLIENTE_NOMBRE": "Manuel Pincay",
+        "CLIENTE_CEDULA": "1308386000",
+        "CLIENTE_TELEFONO": "0978471350",
+        "CLIENTE_CONTRA": "3211"
+    }
+
+}
+
+Reservas{
+    {
+        "RESERVACION_ID": 1,
+        "CLIENTE_CEDULA": "1302541360",
+        "SERVICIO_ID": 1,
+        "ESTABLECIMIENTO_ID": "1",
+        "RESERVACION_PRECIO": 10,
+        "RESERVACION_FECHA": "05-12-2021",
+        "RESERVACION_HORA": "08:30",
+        "CARRO_PLACA": "MAA5302"
+    },
+    {
+        "RESERVACION_ID": 2,
+        "CLIENTE_CEDULA": "1247425867",
+        "SERVICIO_ID": 2,
+        "ESTABLECIMIENTO_ID": "2",
+        "RESERVACION_PRECIO": 15,
+        "RESERVACION_FECHA": "04-10-2021",
+        "RESERVACION_HORA": "14:30",
+        "CARRO_PLACA": "MBC2578"
+    },
+    {
+        "RESERVACION_ID": 3,
+        "CLIENTE_CEDULA": "1347536987",
+        "SERVICIO_ID": 3,
+        "ESTABLECIMIENTO_ID": "3",
+        "RESERVACION_PRECIO": 30,
+        "RESERVACION_FECHA": "14-12-2021",
+        "RESERVACION_HORA": "09:30",
+        "CARRO_PLACA": "MBA6541"
+    },
+    {
+        "RESERVACION_ID": 4,
+        "CLIENTE_CEDULA": "1347621498",
+        "SERVICIO_ID": 4,
+        "ESTABLECIMIENTO_ID": "4",
+        "RESERVACION_PRECIO": 20,
+        "RESERVACION_FECHA": "20-06-2021",
+        "RESERVACION_HORA": "12:15",
+        "CARRO_PLACA": "MBB5017"
+    },
+    {
+        "RESERVACION_ID": 5,
+        "CLIENTE_CEDULA": "1328471246",
+        "SERVICIO_ID": 5,
+        "ESTABLECIMIENTO_ID": "5",
+        "RESERVACION_PRECIO": 8,
+        "RESERVACION_FECHA": "04-07-2021",
+        "RESERVACION_HORA": "09:45",
+        "CARRO_PLACA": "MBC9874"
+    }
+}
+
+Carros {
+    {
+        "CARRO_PLACA": "MAA5302",
+        "CARRO_MODELO": "Chevrolet Dmax",
+        "CARRO_ANIO": 2018,
+        "CARRO_COMENTARIO":"La puerta no cierra bien."
+    },
+    {
+        "CARRO_PLACA": "MBC2578",
+        "CARRO_MODELO": "Kia Rio Stylus LS",
+        "CARRO_ANIO": 2013,
+        "CARRO_COMENTARIO":"Las luces de parqueo no funcionan."
+    },    {
+        "CARRO_PLACA": "MBA6541",
+        "CARRO_MODELO": "Susuki 3",
+        "CARRO_ANIO": 1994,
+        "CARRO_COMENTARIO":"No aplica comentario."
+    },    {
+        "CARRO_PLACA": "MBB5017",
+        "CARRO_MODELO": "Hyundai Tucson",
+        "CARRO_ANIO": 2017,
+        "CARRO_COMENTARIO":"La bateria tiende a descargarse."
+    },    {
+        "CARRO_PLACA": "MBC9874",
+        "CARRO_MODELO": "Porshe Caiman Turbo Eco-Pais",
+        "CARRO_ANIO": 2023,
+        "CARRO_COMENTARIO":"La parte trasera está un poco golpeada."
+    }
+}

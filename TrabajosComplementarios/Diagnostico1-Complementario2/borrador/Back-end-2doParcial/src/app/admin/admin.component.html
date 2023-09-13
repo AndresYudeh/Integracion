@@ -1,0 +1,118 @@
+
+   <body>
+    <nav class=" container-fluid navbar bg-primary">
+      <div class="container-fluid">
+        <a href="http://localhost:4200/" class="navbar-brand logo">APPWEB SEXTO A</a>
+        <div class="d-flex">
+          <a class="btn btn-light" href="admin/registrodatos" type="submit">REGISTRAR/MODIFICAR DATOS</a>
+        </div>
+        <div class="d-flex">
+          <a class="btn btn-success" href="http://localhost:4200/" type="submit">INTERFAZ USUARIO</a>
+        </div>
+      </div>
+    </nav>
+  
+    <div class="d-flex" id="content-wrapper">
+  
+      <!-- Sidebar -->
+      <div id="sidebar-container" class="bg-primary">
+        <div class="menu">
+          <a (click)="tablitaservicios()" class="d-block text-light p-3 border-0"><i class="bi bi-arrow-repeat"></i>
+            <span class="name"> SERVICIOS </span></a>
+  
+          <a (click)="tablitacarros()" class="d-block text-light p-3 border-0"><i class="bi bi-arrow-repeat"></i>
+            <span class="name"> CARROS </span></a>
+  
+          <a (click)="tablitaclientes()" class="d-block text-light p-3 border-0"><i class="bi bi-arrow-repeat"></i>
+            <span class="name"> CLIENTES </span></a>
+  
+          <a href="admin/rgtrab" class="d-block text-light p-3 border-0"><i class="bi bi-arrow-repeat"></i>
+            <span class="name"> TRABAJADORES </span></a>
+  
+          <a (click)="tablitaestablecimiento()" class="d-block text-light p-3 border-0"><i class="bi bi-arrow-repeat"></i>
+            <span class="name"> ESTABLECIMIENTO</span></a>
+    
+  
+        </div>
+      </div>
+  
+      <div class="container-fluid" id="datos">
+        <!-- ------------------------------------SERVICIOS-------------------------------------------- -->
+        <div class="card" *ngIf="serviciong">
+          <div class="row align-items-start" *ngFor="let servicio of servicios">
+  
+            <div class="col ">
+              <h2> ID: {{servicio.SERVICIO_ID}} - {{servicio.SERVICIO_NOMBRE}}</h2>
+            </div>
+            <div class="col">
+              <p>{{servicio.SERVICIO_TIEMPO}} </p>
+            </div>
+            <div class="col">
+              <h2> PRECIO : $ {{servicio.SERVICIO_PRECIO}} </h2>
+            </div>
+            <div class="col">
+              <p>{{servicio.ESTABLECIMIENTO_NOMBRE}} </p>
+            </div>
+  
+            <div class="col align-items-center">
+              <a (click)="eliminarservicios(servicio.SERVICIO_ID)" class="btn btn-danger"> ELIMINAR </a>
+            </div>
+          </div>
+        </div>
+        <!-- ------------------------------------CARROS-------------------------------------------- -->
+        <div class="card" *ngIf="carrosng">
+          <div class="row align-items-start" *ngFor="let carro of carros">
+  
+            <div class="col ">
+              <h2> ID: {{carro.CARRO_PLACA}} - {{carro.CARRO_MODELO}}</h2>
+            </div>
+            <div class="col">
+              <p>{{carro.CARRO_ANIO}}</p>
+            </div>
+            <div class="col">
+              <h2> Comentario: {{carro.CARRO_COMENTARIO}} </h2>
+            </div>
+  
+            <div class="col align-items-center">
+              <button class="btn btn-danger " (click)="eliminarcarros(carro.CARRO_PLACA)"> ELIMINAR </button>
+            </div>
+          </div>
+        </div>
+  
+        <!-- ------------------------------------CLIENTES-------------------------------------------- -->
+        <div class="card" *ngIf="clientesng">
+          <div class="row align-items-start" *ngFor="let cliente of clientes">
+  
+            <div class="col ">
+              <h2> Nombre: {{cliente.CLIENTE_NOMBRE}} <br> CI: {{cliente.CLIENTE_CEDULA}}</h2>
+            </div>
+            <div class="col">
+              <p> <br> Número de contacto: {{cliente.CLIENTE_TELEFONO}}</p>
+            </div>
+            <div class="col">
+              <br>
+              <button class="btn btn-danger " (click)="eliminarclientes(cliente.CLIENTE_CEDULA)"> ELIMINAR </button>
+            </div>
+          </div>
+        </div>
+        <!-- ------------------------------------Establecimiento-------------------------------------------- -->
+        <div class="card" *ngIf="Establecimientong">
+          <div class="row align-items-start" *ngFor="let Establecimiento of Establecimientos">
+             <div class="col ">
+              <h2> ID: {{Establecimiento.ESTABLECIMIENTO_ID}} - {{Establecimiento.ESTABLECIMIENTO_NOMBRE}}</h2>
+            </div>
+            <div class="col">
+              <h2> Descripcion : $ {{Establecimiento.ESTABLECIMIENTO_DESCRIPCION}} </h2>
+            </div>
+            <br>
+            <div class="col">
+              <a (click)="eliminarestablecimiento(Establecimiento.ESTABLECIMIENTO_ID)" class="btn btn-danger"> ELIMINAR </a>
+            </div>
+          </div>
+        </div>
+        <!-- ------------------------------------NOMBRE DEL PROCESO-------------------------------------------- -->
+  
+      </div>
+    </div>
+  
+  </body>

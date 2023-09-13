@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.router = void 0;
+const express_1 = require("express");
+const express_validator_1 = require("express-validator");
+const Index_1 = require("../Controllers/Index");
+const { obtenerEstablecimientos, obtenerEstablecimiento, crearEstablecimiento, actualizarEstablecimiento, borrarEstablecimiento } = Index_1.Establecimiento;
+const router = (0, express_1.Router)();
+exports.router = router;
+router.get('/', obtenerEstablecimientos);
+router.get('/:ESTABLECIMIENTO_NOMBRE', obtenerEstablecimiento);
+router.post('/', [(0, express_validator_1.check)('id', 'ID es obligatorio').not().isEmpty()], crearEstablecimiento);
+router.put('/:ESTABLECIMIENTO_ID', actualizarEstablecimiento);
+router.delete('/:ESTABLECIMIENTO_ID', borrarEstablecimiento);

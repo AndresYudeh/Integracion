@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.router = void 0;
+const express_1 = require("express");
+const express_validator_1 = require("express-validator");
+const Index_1 = require("../Controllers/Index");
+const Index_2 = require("../Middlewares/Index");
+const { CrearReserva, ObtenerReserva, ObtenerReservas, ActualizarReserva, BorrarReserva } = Index_1.Reserva;
+const router = (0, express_1.Router)();
+exports.router = router;
+const { validarCampos, validarRepetidoReservas } = Index_2.funciones;
+router.get('/', ObtenerReservas);
+router.get('/:CLIENTE_CEDULA', ObtenerReserva);
+router.post('/', [(0, express_validator_1.check)('RESERVACION_ID', 'El ingreso del ID de la reserva es obligatoria e irrepetible.').not().isEmpty(), validarCampos, validarRepetidoReservas], [(0, express_validator_1.check)('CLIENTE_CEDULA', 'La cedula del cliente es obligatoria.').not().isEmpty(), validarCampos], [(0, express_validator_1.check)('SERVICIO_ID', 'La ID del servicio es obligatoria.').not().isEmpty(), validarCampos], [(0, express_validator_1.check)('ESTABLECIMIENTO_ID', 'La ID del establecimiento es obligatoria.').not().isEmpty(), validarCampos], [(0, express_validator_1.check)('RESERVACION_PRECIO', 'Ubicar el precio de la reservacion es obligatorio.').not().isEmpty(), validarCampos], [(0, express_validator_1.check)('RESERVACION_FECHA', 'La fecha de la fecha de la reservacion es obligatoria.').not().isEmpty(), validarCampos], [(0, express_validator_1.check)('RESERVACION_HORA', 'La hora de la reservacion es obligatoria.').not().isEmpty(), validarCampos], [(0, express_validator_1.check)('CARRO_PLACA', 'La placa del vehiculo es obligatoria.').not().isEmpty(), validarCampos], CrearReserva);
+router.put('/:RESERVACION_ID', ActualizarReserva);
+router.delete('/:RESERVACION_ID', BorrarReserva);

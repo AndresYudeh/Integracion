@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.router = void 0;
+const express_1 = require("express");
+const express_validator_1 = require("express-validator");
+const Index_1 = require("../Controllers/Index");
+const Index_2 = require("../Middlewares/Index");
+const { obtenerClientes, obtenerCliente, crearCliente, actualizarCliente, borrarCliente } = Index_1.Cliente;
+const router = (0, express_1.Router)();
+exports.router = router;
+const { validarCampos, validarRepetidoClientes } = Index_2.funciones;
+router.get('/', obtenerClientes);
+router.get('/:CLIENTE_CEDULA', obtenerCliente);
+router.post('/', [(0, express_validator_1.check)('CLIENTE_CEDULA', 'El ingreso de la cedula es obligatoria e irrepetible.').not().isEmpty(), validarCampos, validarRepetidoClientes], [(0, express_validator_1.check)('CLIENTE_NOMBRE', 'El nombre es obligatorio').not().isEmpty(), validarCampos], [(0, express_validator_1.check)('CLIENTE_TELEFONO', 'El número celular es obligatorio').not().isEmpty(), validarCampos], [(0, express_validator_1.check)('CLIENTE_CONTRA', 'La contraseña es obligatoria').not().isEmpty(), validarCampos], crearCliente);
+router.put('/:CLIENTE_CEDULA', actualizarCliente);
+router.delete('/:CLIENTE_CEDULA', borrarCliente);

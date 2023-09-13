@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.router = void 0;
+const express_1 = require("express");
+const express_validator_1 = require("express-validator");
+const Index_1 = require("../Controllers/Index");
+const Index_2 = require("../Middlewares/Index");
+const { obtenerServicios, obtenerServicio, crearServicio, actualizarServicio, borrarServicio } = Index_1.Servicio;
+const router = (0, express_1.Router)();
+exports.router = router;
+const { validarCampos, validarRepetidoServicios } = Index_2.funciones;
+router.get('/', obtenerServicios);
+router.get('/:SERVICIO_NOMBRE', obtenerServicio);
+router.post('/', [(0, express_validator_1.check)('SERVICIO_ID', 'El ID del servicio es obligatorio').not().isEmpty(), validarCampos, validarRepetidoServicios], [(0, express_validator_1.check)('SERVICIO_NOMBRE', 'El Nombre del servicio es obligatorio').not().isEmpty(), validarCampos], [(0, express_validator_1.check)('SERVICIO_PRECIO', 'El Precio del servicio es obligatorio').not().isEmpty(), validarCampos], [(0, express_validator_1.check)('SERVICIO_TIEMPO', 'El Tiempo que aproximado que dura servicio es obligatorio').not().isEmpty(), validarCampos], [(0, express_validator_1.check)('ESTABLECIMIENTO_NOMBRE', 'El Nombre del establecimiento que ofrece el servicio es obligatorio').not().isEmpty(), validarCampos], crearServicio);
+router.put('/:SERVICIO_ID', actualizarServicio);
+router.delete('/:SERVICIO_ID', borrarServicio);

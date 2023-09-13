@@ -1,0 +1,24 @@
+{
+  "name": "segundoparcial",
+  "version": "1.0.0",
+  "description": "Traspasar las siguiente carpetas a typescript:\r - Interfaces\r - Models\r - Controllers\r - Routers\r ## Distribucion:\r * Manuel Pincay\r    - Carros(Interfaces, models, controllers, Routers)\r * Branly Yudeh\r    - Clientes(Interfaces, models, controllers, Routers)\r * Kelvin Muñoz\r    - Espacios(Interfaces, models, controllers, Routers)\r * Ian Velez\r    - Establecimiento(Interfaces, models, controllers, Routers)\r * Jesús Reyes\r    - Reservas(Interfaces, models, controllers, Routers)\r * Los archivos index se trabajaron con la herramienta liveShare",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.1",
+    "mongoose": "^6.3.8"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "nodemon": "^2.0.16"
+  }
+}

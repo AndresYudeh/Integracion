@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.router = void 0;
+const express_1 = require("express");
+const express_validator_1 = require("express-validator");
+const Index_1 = require("../Controllers/Index");
+const Index_2 = require("../Middlewares/Index");
+const { obtenerTrabajador, obtenerTrabajadores, crearTrabajador, actualizarTrabajador, borrarTrabajador } = Index_1.Trabajador;
+const router = (0, express_1.Router)();
+exports.router = router;
+const { validarCampos, validarRepetidoTrabajadores } = Index_2.funciones;
+router.get('/', obtenerTrabajadores);
+router.get('/:TRABAJADOR_CEDULA', obtenerTrabajador);
+router.post('/', [(0, express_validator_1.check)('TRABAJADOR_CEDULA', 'El ingreso de la cedula es obligatoria e irrepetible.').not().isEmpty(), validarCampos, validarRepetidoTrabajadores], [(0, express_validator_1.check)('TRABAJADOR_NOMBRE', 'El nombre es obligatorio').not().isEmpty(), validarCampos], [(0, express_validator_1.check)('TRABAJADOR_APELLIDO', 'El apellido es obligatorio').not().isEmpty(), validarCampos], [(0, express_validator_1.check)('TRABAJADOR_TELEFONO', 'El número celular es obligatorio').not().isEmpty(), validarCampos], [(0, express_validator_1.check)('TRABAJADOR_CARGO', 'El cargo del trabajador es obligatorio').not().isEmpty(), validarCampos], crearTrabajador);
+router.put('/:TRABAJADOR_CEDULA', actualizarTrabajador);
+router.delete('/:TRABAJADOR_CEDULA', borrarTrabajador);
