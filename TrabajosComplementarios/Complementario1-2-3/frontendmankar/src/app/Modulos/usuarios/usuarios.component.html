@@ -1,0 +1,97 @@
+<body class="container-fluid">
+
+  <nav class="nav">
+    <i class="uil uil-bars navOpenBtn"></i>
+    <a href="/principal" class="logo">APPWEB MANKAR</a>
+    <ul class="nav-links">
+      <i class="uil uil-times navCloseBtn"></i>
+      <li><a href="/principal">Home</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Products</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </nav>
+ 
+
+  <section>
+
+    <div class="container mt-5">
+      <!-- Centra el contenido horizontalmente -->
+      <div class="mx-auto text-center">
+        <h3 class="section-heading logo">NUEVO MANTENIMIENTOS</h3>
+        <a href="/verusuarios" class="btn btn-primary" > Ver Lista Usuarios</a>
+      </div>
+    </div>
+  
+    <div class="container-lg mb-8" id="usuarios-form" style="margin-top: 4rem;">
+      <div class="card m-2">
+        <div class="row">
+          <div class="container mb-3">
+            <form (ngSubmit)="agregarUsuario()" #usuarioForm="ngForm" class="mx-5 my-3">
+              <h2>Agregar Usuario</h2>
+  
+              <div class="mb-3">
+                <label for="dni" class="form-label">DNI</label>
+                <div class="input-group">
+                  <input type="number" id="dni" name="dni" [(ngModel)]="nuevoUsuario.USUARIO_DNI" class="form-control small-input" required>
+                </div>
+              </div>
+  
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="email" [(ngModel)]="nuevoUsuario.USUARIO_EMAIL" class="form-control" required>
+              </div>
+  
+              <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" id="password" name="password" [(ngModel)]="nuevoUsuario.USUARIO_PASSWORD" class="form-control" required>
+              </div>
+  
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" id="nombre" name="nombre" [(ngModel)]="nuevoUsuario.USUARIO_NOMBRE" class="form-control" required>
+              </div>
+  
+              <div class="mb-3">
+                <label for="estado" class="form-label">Estado</label>
+                <select id="estado" name="estado" [(ngModel)]="nuevoUsuario.ESTADO" class="form-select" required>
+                  <option [value]="true">Activo</option>
+                  <option [value]="false">Inactivo</option>
+                </select>
+              </div>
+  
+              <div class="mb-3">
+                <label for="placa" class="form-label">Placa del Vehículo</label>
+                <input type="text" id="placa" name="placa" [(ngModel)]="nuevoUsuario.UNIDADES_PLACA" class="form-control" required>
+              </div>
+  
+              <div class="mb-3">
+                <label for="rol" class="form-label">Rol</label>
+                <select id="rol" name="rol" [(ngModel)]="nuevoUsuario.ROL_ID" class="form-select" required>
+                  <!-- Añade las opciones de roles desde tus datos -->
+                  <option [value]="rol.ROL_ID" *ngFor="let rol of Roles">{{ rol.ROL_DESCRIPCION }}</option>
+                </select>
+              </div>
+              
+              
+  
+              <button class="btn btn-primary" type="submit">Agregar Mantenimiento</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <footer class="row">
+    <p class="mb-0 w-100 text-center col-12">
+    &copy; The Backyardigans </p>
+  </footer>
+
+
+  
+
+  </body>
+    
+  

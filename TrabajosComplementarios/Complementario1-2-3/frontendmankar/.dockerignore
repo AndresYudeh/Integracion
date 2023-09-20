@@ -1,0 +1,12 @@
+# Archivos y directorios generados por el sistema
+node_modules
+dist
+.tmp
+.cypress
+coverage
+
+# Archivos y directorios de desarrollo
+*.log
+*.tsbuildinfo
+*.js.map
+
