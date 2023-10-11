@@ -18,9 +18,10 @@ services:
   frontend:
     build: 
       context: ./frontendmankar
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     ports:
-      - '8080:8080'
+      - '3003:3003'
     restart: always
     depends_on:
       - backend
+
