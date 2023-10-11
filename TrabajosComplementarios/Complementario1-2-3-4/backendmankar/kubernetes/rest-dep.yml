@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rest-dep
+  namespace: pruebas-mankar
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rest-service
+  template:
+    metadata:
+      labels:
+        app: rest-service
+    spec:
+      containers:
+        - name: rest-service
+          image: jesusdrc/backmankar
+          ports:
+          - containerPort: 3000
+          env:
+          - name: PORT
+            value: "3000"
+          - name: baseUrl
+            valueFrom:
+              configMapKeyRef:
+                name: app-conf
+                key: baseUrl
+          - name: SecretsUser
+            valueFrom:
+              secretKeyRef:
+                name: contra-db
+                key: db_user
+          - name: SecretsPassword
+            valueFrom:
+              secretKeyRef:
+                name: contra-db
+                key: db_password
+
