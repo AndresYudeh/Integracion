@@ -1,0 +1,76 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Services Section</title>
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+</head>
+
+
+<body class="container-fluid">
+    <!-- Barra de navegación -->
+    <nav class="nav">
+      <i class="uil uil-bars navOpenBtn"></i>
+      <a href="/principal" class="logo">APPWEB MANKAR</a>
+      <ul class="nav-links">
+        <i class="uil uil-times navCloseBtn"></i>
+        <li><a href="/principal">Home</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </nav>
+  
+    <!-- Lista de Unidades -->
+
+
+  <section>
+    <div class="container mt-5">
+      <!-- Centra el contenido horizontalmente -->
+      <div class="mx-auto text-center">
+        <h3 class="section-heading logo">LISTA DE UNIDADES</h3>
+        <a href="/unidades" class="btn btn-primary" > Agregar Unidad</a>
+      </div>
+    </div>
+    
+
+    <div class="container-lg mb-8" id="unidades-list">
+     
+      <table class="content-table mx-auto">
+        <thead>
+          <tr>
+            <th>Placa</th>
+            <th>Número</th>
+            <th>Color</th>
+            <th>Matrícula</th>
+            <th>Año</th>
+            <th>Estado</th>
+            <th>ID Establecimiento</th>
+            <th>DNI del Usuario</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Utiliza *ngFor para iterar sobre la lista de unidades y mostrarlas en la tabla -->
+          <tr *ngFor="let unidad of unidades">
+            <td>{{ unidad.UNIDADES_PLACA }}</td>
+            <td>{{ unidad.UNIDADES_NUMERO }}</td>
+            <td>{{ unidad.UNIDADES_COLOR }}</td>
+            <td>{{ unidad.UNIDADES_MATRICULA }}</td>
+            <td>{{ unidad.UNIDADES_ANO }}</td>
+            <td>{{ unidad.ESTADO ? 'Activo' : 'Inactivo' }}</td>
+            <td>{{ unidad.ESTABLECIMIENTO_ID }}</td>
+            <td>{{ unidad.USUARIO_DNI }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+    
+  
+    <footer class="row">
+      <p class="mb-0 w-100 text-center col-12">&copy; The Backyardigans</p>
+    </footer>
+  </body>
+  

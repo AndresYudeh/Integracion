@@ -1,0 +1,77 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Services Section</title>
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+</head>
+
+<body class="container-fluid" >
+
+  <nav class="nav">
+    <i class="uil uil-bars navOpenBtn"></i>
+    <a href="/principal" class="logo">APPWEB MANKAR</a>
+    <ul class="nav-links">
+      <i class="uil uil-times navCloseBtn"></i>
+      <li><a href="/principal">Home</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Products</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <section>
+
+   
+    <div class="container mt-5">
+      <!-- Centra el contenido horizontalmente -->
+      <div class="mx-auto text-center">
+        <h3 class="section-heading logo">LISTA DE MANTENIMIENTOS</h3>
+        <a href="/mantenimientos" class="btn btn-primary" > Agregar Mantenimiento</a>
+      </div>
+    </div>
+
+    <table class="content-table mx-auto">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Kilómetraje Actual</th>
+              <th>Kilómetraje Proximo</th>
+              <th>Detalle</th>
+              <th>Fecha</th>
+             <!--  <th>Imagen</th>
+              <th>Imagen2</th>
+              <th>Estado</th> -->
+              <th>Placa del Vehículo</th>
+              <th>Tipo Mantenimiento ID </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <!-- Utiliza *ngFor para iterar sobre la lista de mantenimientos y mostrarlos en la tabla -->
+            <tr *ngFor="let Mantenimiento of Mantenimiento">
+              <td>{{ Mantenimiento.MANTENIMIENTO_ID}}</td>
+              <td>{{ Mantenimiento.MANTENIMIENTO_KMAC }}</td>
+              <td>{{ Mantenimiento.MANTENIMIENTO_KMPROX }}</td>
+              <td>{{ Mantenimiento.MANTENIMIENTO_COMENTARIO }}</td>
+              <td>{{ Mantenimiento.MANTENIMIENTO_FECHA }}</td>
+           <!--    <td>{{ Mantenimiento.MANTENIMIENTO_IMAGEN }}</td>
+              <td>{{ Mantenimiento.MANTENIMIENTO_IDMANTENIMIENTO_IMAGEN2 }}</td>
+              <td>{{ Mantenimiento.ESTADO }}</td> -->
+              <td>{{ Mantenimiento.UNIDADES_PLACA }}</td>
+              <td>{{ Mantenimiento.TIPOSMANTE_ID}}</td>
+            </tr>
+          </tbody>
+        </table>
+  </section>
+   
+  
+    <footer class="row">
+      <p class="mb-0 w-100 text-center col-12">
+      &copy; The Backyardigans </p>
+    </footer>
+  
+  
+  </body>

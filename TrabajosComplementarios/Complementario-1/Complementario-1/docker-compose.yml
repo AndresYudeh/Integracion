@@ -1,0 +1,24 @@
+version: '1.0'
+
+services:
+  mongo:
+    image: 'mongo'
+    ports:
+      - 27017:27017
+
+  backend:
+    build: ./back-mankar
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./back-mankar:/Index
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./front-mankar:/app
+    ports:
+      - '3003:3003'
+    restart: always
+    depends_on:
+      - backend
