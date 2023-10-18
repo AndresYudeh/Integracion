@@ -1,0 +1,96 @@
+<div class="container-fluid">
+  <nav class="container-fluid navbar">
+    <div class="container-fluid">
+      <a href="/principal" class="navbar-brand logo">APPWEB MANKAR</a>
+    </div>
+  </nav>
+
+  <div class="container-mg">
+    <ul class="row align-items-center bg-primary" style="margin-top: 3rem">
+      <li class="col">
+        <a [routerLink]="['/verrepostajes']">
+          <span class="icon"><i class="bi bi-card-checklist"></i></span>
+          <span class="name">Ver Repostajes</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div style="margin-bottom: 20px"></div>
+
+  <div class="container-lg mb-8" id="services-cards">
+    <div class="card m-2">
+      <div class="row">
+        <div class="container mb-3">
+          <form
+            (ngSubmit)="agregarRepostaje()"
+            #repostajeForm="ngForm"
+            class="mx-5 my-3"
+          >
+            <h2>Agregar Repostaje</h2>
+
+            <div class="mb-3">
+              <label for="id" class="form-label">ID</label>
+              <input
+                type="number"
+                id="id"
+                name="id"
+                [(ngModel)]="nuevoRepostaje.REPOSTAJE_ID"
+                class="form-control"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="kmac" class="form-label">Kilómetros Actuales</label>
+              <input
+                type="number"
+                id="kmac"
+                name="kmac"
+                [(ngModel)]="nuevoRepostaje.REPOSTAJE_KMAC"
+                class="form-control"
+                required
+              />
+            </div>
+
+
+            <div class="mb-3">
+              <label for="comentario" class="form-label">Comentario</label>
+              <textarea
+                id="comentario"
+                name="comentario"
+                [(ngModel)]="nuevoRepostaje.REPOSTAJE_COMENTARIO"
+                class="form-control"
+                required
+                placeholder="Ingrese los comentarios relacionados al repostaje"
+              ></textarea>
+            </div>
+
+           
+
+            <div class="mb-3">
+              <label for="placa" class="form-label">Placa del Vehículo</label>
+              <input
+                type="text"
+                id="placa"
+                name="placa"
+                [(ngModel)]="nuevoRepostaje.UNIDADES_PLACA"
+                class="form-control"
+                required
+                placeholder="Ingrese la placa del vehículo"
+              />
+            </div>
+
+            <button class="btn btn-primary" type="submit">
+              Agregar Repostaje
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="row">
+    <p class="mb-0 w-100 text-center col-12">&copy; The Backyardigans</p>
+  </footer>
+</div>

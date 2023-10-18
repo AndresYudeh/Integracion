@@ -1,0 +1,56 @@
+<body class="container-fluid">
+    <nav class="container-fluid navbar">
+      <div class="container-fluid">
+        <a href="/principal" class="navbar-brand logo">APPWEB MANKAR</a>
+        <div class="d-flex">
+          <button class="btn btn-primary mx-4" type="submit">Hola</button>
+          <a href="inicio" class="btn btn-danger" type="submit">Cerrar Sesión</a>
+        </div>
+      </div>
+    </nav>
+  
+    <div class="container-mg">
+      <ul class="row align-items-center bg-primary">
+        <li class="col">
+          <a [routerLink]="['/repostajes']">
+            <span class="icon"><i class="bi bi-card-checklist"></i></span>
+            <span class="name">Agregar Repostajes</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  
+    <table class="content-table mx-auto" >
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Kilómetros Actuales</th>
+          <th>Kilómetros Próximos</th>
+          <th>Comentario</th>
+          <th>Fecha</th>
+          <th>Placa del Vehículo</th>
+          <th>ID del Tipo de Mantenimiento</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <!-- Utiliza *ngFor para iterar sobre la lista de repostajes y mostrarlos en la tabla -->
+        <tr *ngFor="let repostaje of Repostajes">
+          <td>{{ repostaje.REPOSTAJE_ID }}</td>
+          <td>{{ repostaje.REPOSTAJE_KM }}</td>
+          <td>{{ repostaje.REPOSTAJE_CANTIDAD }}</td>
+          <td>{{ repostaje.REPOSTAJE_COMENTARIO }}</td>
+          <td>{{ repostaje.REPOSTAJE_FECHA }}</td>
+          <td>{{ repostaje.UNIDADES_PLACA }}</td>
+          <td>{{ repostaje.TIPOREPOSTAJE_ID }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <footer class="row">
+      <p class="mb-0 w-100 text-center col-12">
+        &copy; The Backyardigans
+      </p>
+    </footer>
+  </body>
+  

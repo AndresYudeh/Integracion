@@ -1,0 +1,56 @@
+
+<body class="container-fluid" >
+  <nav class="nav">
+    <i class="uil uil-bars navOpenBtn"></i>
+    <a href="/principal" class="logo">APPWEB MANKAR</a>
+    <ul class="nav-links">
+      <i class="uil uil-times navCloseBtn"></i>
+      <li><a href="/principal">Home</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Products</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <section>
+   
+    <div class="container mt-5">
+      <div class="mx-auto text-center">
+        <h3 class="section-heading logo">LISTA DE USUARIOS</h3>
+        <a href="/usuarios" class="btn btn-primary" > Agregar usuario</a>
+      </div>
+    </div>
+  
+    <table class="content-table mx-auto">
+        <thead>
+          <tr>
+            <th>DNI</th>
+            <th>Email</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Placa del Vehículo</th>
+            <th>Rol ID</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of Usuarios">
+            <td>{{ usuario.USUARIO_DNI }}</td>
+            <td>{{ usuario.USUARIO_EMAIL }}</td>
+            <td>{{ usuario.USUARIO_NOMBRE }}</td>
+            <td>{{ usuario.ESTADO }}</td>
+            <td>{{ usuario.UNIDADES_PLACA }}</td>
+            <td>{{ usuario.ROL_ID }}</td>
+          </tr>
+        </tbody>
+      </table>
+  </section>
+   
+  
+  <footer class="row">
+    <p class="mb-0 w-100 text-center col-12">
+    &copy; The Backyardigans </p>
+  </footer>
+
+
+</body>

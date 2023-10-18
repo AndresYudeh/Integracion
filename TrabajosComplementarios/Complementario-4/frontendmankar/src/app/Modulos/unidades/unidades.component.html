@@ -1,0 +1,136 @@
+<body class="container-fluid">
+
+  <nav class="nav">
+    <i class="uil uil-bars navOpenBtn"></i>
+    <a href="/principal" class="logo">APPWEB MANKAR</a>
+    <ul class="nav-links">
+      <i class="uil uil-times navCloseBtn"></i>
+      <li><a href="/principal">Home</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Products</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </nav>
+  
+   
+  <section>
+
+    <div class="container mt-5">
+      <div class="mx-auto text-center">
+        <h3 class="section-heading logo">NUEVA UNIDAD</h3>
+        <a href="/verunidades" class="btn btn-primary" > Ver Lista Unidades</a>
+      </div>
+    </div>
+    
+    <div class="container-lg mb-8" id="services-cards">
+      <div class="card m-2">
+        <div class="row">
+          <div class="container mb-3">
+            <form
+              (ngSubmit)="agregarUnidad()"
+              #unidadForm="ngForm"
+              class="mx-5 my-3"
+            >
+              <h2>Agregar Unidad</h2>
+  
+              <div class="mb-3">
+                <label for="placa" class="form-label">Placa</label>
+                <input
+                  type="text"
+                  id="placa"
+                  name="placa"
+                  [(ngModel)]="nuevaUnidad.UNIDADES_PLACA"
+                  class="form-control"
+                  required
+                />
+              </div>
+  
+              <div class="mb-3">
+                <label for="numero" class="form-label">Número</label>
+                <input
+                  type="number"
+                  id="numero"
+                  name="numero"
+                  [(ngModel)]="nuevaUnidad.UNIDADES_NUMERO"
+                  class="form-control"
+                  required
+                />
+              </div>
+  
+              <div class="mb-3">
+                <label for="color" class="form-label">Color</label>
+                <input
+                  type="text"
+                  id="color"
+                  name="color"
+                  [(ngModel)]="nuevaUnidad.UNIDADES_COLOR"
+                  class="form-control"
+                  required
+                />
+              </div>
+  
+              <div class="mb-3">
+                <label for="matricula" class="form-label">Matrícula</label>
+                <input
+                  type="text"
+                  id="matricula"
+                  name="matricula"
+                  [(ngModel)]="nuevaUnidad.UNIDADES_MATRICULA"
+                  class="form-control"
+                  required
+                />
+              </div>
+  
+              <div class="mb-3">
+                <label for="ano" class="form-label">Año</label>
+                <input
+                  type="number"
+                  id="ano"
+                  name="ano"
+                  [(ngModel)]="nuevaUnidad.UNIDADES_ANO"
+                  class="form-control"
+                  required
+                />
+              </div>
+  
+
+              <div class="mb-3">
+                <label for="establecimientoId" class="form-label">ID del Establecimiento</label>
+                <input
+                  type="number"
+                  id="establecimientoId"
+                  name="establecimientoId"
+                  [(ngModel)]="nuevaUnidad.ESTABLECIMIENTO_ID"
+                  class="form-control"
+                  required
+                />
+              </div>
+  
+              <div class="mb-3">
+                <label for="usuarioDni" class="form-label">DNI del Usuario</label>
+                <input
+                  type="number"
+                  id="usuarioDni"
+                  name="usuarioDni"
+                  [(ngModel)]="nuevaUnidad.USUARIO_DNI"
+                  class="form-control"
+                  required
+                />
+              </div>
+  
+              <button class="btn btn-primary" type="submit">
+                Agregar Unidad
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+</body>
+    
+  
+   

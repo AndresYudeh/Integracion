@@ -1,0 +1,93 @@
+<body class="container-fluid">
+
+  <nav class="nav">
+    <i class="uil uil-bars navOpenBtn"></i>
+    <a href="/principal" class="logo">APPWEB MANKAR</a>
+    <ul class="nav-links">
+      <i class="uil uil-times navCloseBtn"></i>
+      <li><a href="/principal">Home</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Products</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </nav>
+ 
+
+  <section>
+
+    <div class="container mt-5">
+      <!-- Centra el contenido horizontalmente -->
+      <div class="mx-auto text-center">
+        <h3 class="section-heading logo">NUEVO MANTENIMIENTOS</h3>
+        <a href="/vermantenimientos" class="btn btn-primary" > Ver Lista Mantenimiento</a>
+      </div>
+    </div>
+
+    <div class="container-lg mb-8" id="services-cards" style="margin-top: 4rem;">
+      <div class="card m-2">
+        <div class="row">
+          <div class="container mb-3">
+            <form (ngSubmit)="agregarMantenimiento()" #mantenimientoForm="ngForm" class="mx-5 my-3">
+              <h2>Agregar Mantenimiento</h2>
+  
+              <div class="mb-3">
+                <label for="kmac" class="form-label">Kilómetros Actuales</label>
+                <div class="input-group">
+                  <input type="number" id="kmac" name="kmac" [(ngModel)]="nuevoMantenimiento.MANTENIMIENTO_KMAC" class="form-control small-input" required>
+                </div>
+              </div>
+  
+              <div class="mb-3">
+                <label for="kmprox" class="form-label">Kilómetros Próximos</label>
+                <input type="number" id="kmprox" name="kmprox" [(ngModel)]="nuevoMantenimiento.MANTENIMIENTO_KMPROX" class="form-control" required>
+              </div>
+  
+              <div class="mb-3">
+                <label for="comentario" class="form-label">Comentario</label>
+                <textarea id="comentario" name="comentario" [(ngModel)]="nuevoMantenimiento.MANTENIMIENTO_COMENTARIO" class="form-control" required placeholder="Ingrese los comentarios relacionados al mantenimiento realizado"></textarea>
+              </div>
+  
+              <div class="mb-3">
+                <label for="fecha" class="form-label">Fecha</label>
+                <input type="date" id="fecha" name="fecha" [(ngModel)]="nuevoMantenimiento.MANTENIMIENTO_FECHA" class="form-control" required [value]="nuevoMantenimiento.MANTENIMIENTO_FECHA | date:'yyyy-MM-dd'">
+              </div>
+  
+              <div class="mb-3">
+                <label for="imagen" class="form-label">URL de la Imagen</label>
+                <input type="text" id="imagen" name="imagen" [(ngModel)]="nuevoMantenimiento.MANTENIMIENTO_IMAGEN" class="form-control" required>
+              </div>
+  
+              <div class="mb-3">
+                <label for="imagen2" class="form-label">URL de la Segunda Imagen</label>
+                <input type="text" id="imagen2" name="imagen2" [(ngModel)]="nuevoMantenimiento.MANTENIMIENTO_IMAGEN2" class="form-control" required>
+              </div>
+  
+
+              <div class="mb-3">
+                <label for="placa" class="form-label">Placa del Vehículo</label>
+                <input type="text" id="placa" name="placa" [(ngModel)]="nuevoMantenimiento.UNIDADES_PLACA" class="form-control" required>
+              </div>
+    
+  
+              <div class="mb-3">
+                <label for="tipoMantenimiento" class="form-label">Tipo de Mantenimiento</label>
+                <select id="tipoMantenimiento" name="tipoMantenimiento" [(ngModel)]="selectedTipoMantenimiento" class="form-select" required>
+                  <option *ngFor="let tipo of tiposMantenimiento" [value]="tipo.TIPOSMANTE_ID">{{ tipo.TIPOMANTE_DESCRIPCION }}</option>
+                </select>
+              </div>
+  
+              <button class="btn btn-primary" type="submit">Agregar Mantenimiento</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  </body>
+    
+  
+   

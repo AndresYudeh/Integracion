@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-dep
+  namespace: pruebas-mankar
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo
+  template:
+    metadata:
+      labels:
+        app: mongo
+    spec:
+      containers:
+        - name: mongo
+          image: mongo:latest
+          ports:
+          - containerPort: 8443
+          env: 
+          - name: mongo_password
+            valueFrom:
+              secretKeyRef:
+                name: contra-db
+                key: db_password

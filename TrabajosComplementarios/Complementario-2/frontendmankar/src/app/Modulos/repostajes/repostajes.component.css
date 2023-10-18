@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.logo {
+  position: relative;
+  font-size: 2em;
+  color: #000;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+ul {
+  text-align: center;
+  top: 10%;
+  left: 50%;
+  margin: 0;
+  padding: 20px 0;
+  background: #fff;
+  display: flex;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  /*     text-align: center; */
+}
+
+ul li {
+  list-style: none;
+  text-align: center;
+  display: block;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+ul li:last-child {
+  border-right: none;
+}
+
+ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 0 50px;
+  display: block;
+}
+
+ul li a .icon {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  /* overflow: hidden; */
+  margin: 0 auto 10px;
+}
+
+ul li a .icon .bi {
+  width: 100%;
+  height: 100%;
+  line-height: 40px;
+  font-size: 34px;
+  transition: 0.5s;
+  color: #fff;
+}
+
+ul li a .name {
+  position: relative;
+  height: 20px;
+  width: 100%;
+  display: block;
+}
+
+ul li a .name span {
+  display: block;
+  position: relative;
+  color: #000;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.establecimiento {
+  font-size: 2em;
+  font-weight: 700;
+}
+

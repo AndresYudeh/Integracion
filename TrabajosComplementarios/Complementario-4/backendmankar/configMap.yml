@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-conf
+  namespace: pruebas-mankar
+data:
+  projectName: appkubernetes
+  orgId: 628957779185c1236b0b17d5
+  baseUrl: https://cloud.mongodb.com:8443
+
