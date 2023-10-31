@@ -11,27 +11,27 @@
 
 ## Servicio Rest
 ### Metodo Get 
-![Alt text](/Evidencias/image.png)
+![!\[Alt text\](/Evidencias/image.png)](Evidencias/image.png)
 ### Metodo Post
-![Alt text](/Evidencias/image-1.png) 
+![!\[Alt text\](/Evidencias/image-1.png)](Evidencias/image-1.png) 
 ### Metodo Patch
-![Alt text](/Evidencias/image-2.png)
+![!\[Alt text\](/Evidencias/image-2.png)](Evidencias/image-2.png)
 ### Metodo Delete
-![Alt text](/Evidencias/image-3.png)
+![!\[Alt text\](/Evidencias/image-3.png)](Evidencias/image-3.png)
 
 
 
 ## Implementación de Socket (websocket)
 ### Ruta del socket
-![Alt text](/Evidencias/image-4.png)
+![!\[Alt text\](/Evidencias/image-4.png)](Evidencias/image-4.png)
 
 ### Evidencia de la ejecucion del websocket con framework
 
-![Alt text](/Evidencias/image-5.png)
+![!\[Alt text\](/Evidencias/image-5.png)](Evidencias/image-5.png)
 
 ### Ejecución por lado del cliente
-![Alt text](/Evidencias/image-6.png)
+![!\[Alt text\](/Evidencias/image-6.png)](Evidencias/image-6.png)
 
 
 ### Ejecución por lado del servidor
-![Alt text](/Evidencias/image-7.png)
+![!\[Alt text\](/Evidencias/image-7.png)](Evidencias/image-7.png)
