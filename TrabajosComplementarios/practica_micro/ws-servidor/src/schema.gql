@@ -1,0 +1,38 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Usuario {
+  ID_USUARIOS: ID
+  ESTADO: Boolean
+  CORREO: String
+  ID_ROL: Float
+  PLACA: String
+  NOMBRE: String
+}
+
+type Query {
+  repostajes: [Usuario!]!
+  usuario(ID_USUARIOS: Float!): Usuario!
+}
+
+type Mutation {
+  createUsuarios(createUsuarioInput: CreateUsuarioInput!): Usuario!
+  updateUsuarios(ID_USUARIOS: Float!, updateUsuarioInput: UpdateUsuarioInput!): Usuario!
+  removeUsuarios(ID_USUARIOS: Float!): Usuario!
+}
+
+input CreateUsuarioInput {
+  CORREO: String
+  ID_ROL: Int!
+  PLACA: String
+  NOMBRE: String
+}
+
+input UpdateUsuarioInput {
+  CORREO: String
+  ID_ROL: Int
+  PLACA: String
+  NOMBRE: String
+  ESTADO: Boolean
+}

@@ -1,0 +1,103 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Repostaje {
+  REPOSTAJE_ID: ID
+  REPOSTAJE_KMAC: Float
+  REPOSTAJE_COMENTARIO: String
+  ESTADO: Boolean
+  UNIDADES_PLACA: String
+  RUTAS_ID: Float
+}
+
+type Reporte {
+  REPORTE_ID: String
+  FECHA: DateTime
+  DESCRIPCION: String
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Unidade {
+  id: ID!
+  UNIDADES_PLACA: String
+  NUMERO_UNIDAD: Float
+  ID_EMPRESA: Float
+  CORREO: String
+  ESTADO: Boolean
+  COLOR: String
+  MATRICULA: String
+  ANIO: Float
+}
+
+type Query {
+  repostajes: [Repostaje!]!
+  repostaje(REPOSTAJE_ID: Float!): Repostaje!
+  reportes(REPORTE_ID: String!): Reporte!
+  unidade: [Unidade!]!
+  unidades(id: Float!): Unidade!
+}
+
+type Mutation {
+  createRepostaje(createRepostajeInput: CreateRepostajeInput!): Repostaje!
+  updateRepostaje(REPOSTAJE_ID: Float!, updateRepostajeInput: UpdateRepostajeInput!): Repostaje!
+  removeRepostaje(REPOSTAJE_ID: Float!): Repostaje!
+  createReporte(createReporteInput: CreateReporteInput!): Reporte!
+  updateReporte(REPORTE_ID: String!, updateReporteInput: UpdateReporteInput!): Reporte!
+  removeReporte(REPORTE_ID: String!): Reporte!
+  createUnidade(createUnidadeInput: CreateUnidadeInput!): Unidade!
+  updateUnidade(id: Float!, updateUnidadeInput: UpdateUnidadeInput!): Unidade!
+  removeUnidade(id: Float!): Unidade!
+}
+
+input CreateRepostajeInput {
+  REPOSTAJE_KMAC: Int!
+  REPOSTAJE_COMENTARIO: String
+  UNIDADES_PLACA: String!
+  RUTAS_ID: Int!
+}
+
+input UpdateRepostajeInput {
+  REPOSTAJE_KMAC: Int
+  REPOSTAJE_COMENTARIO: String
+  UNIDADES_PLACA: String
+  RUTAS_ID: Int
+  ESTADO: Boolean
+}
+
+input CreateReporteInput {
+  REPORTE_ID: String!
+  FECHA: DateTime!
+  DESCRIPCION: String!
+}
+
+input UpdateReporteInput {
+  REPORTE_ID: String!
+  FECHA: DateTime
+  DESCRIPCION: String
+}
+
+input CreateUnidadeInput {
+  UNIDADES_PLACA: String!
+  NUMERO_UNIDAD: Int!
+  ID_EMPRESA: Int!
+  CORREO: String!
+  COLOR: String!
+  MATRICULA: String!
+  ANIO: Int!
+}
+
+input UpdateUnidadeInput {
+  UNIDADES_PLACA: String
+  NUMERO_UNIDAD: Int
+  ID_EMPRESA: Int
+  CORREO: String
+  COLOR: String
+  MATRICULA: String
+  ANIO: Int
+  ESTADO: Boolean
+}
